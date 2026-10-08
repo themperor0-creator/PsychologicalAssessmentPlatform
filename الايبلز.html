@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام تقييم برنامج ABLLS-R الشامل</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: white !important;
+            }
+            .print-shadow {
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- شريط الهيدر العلوي بنمط مقياس جيليام -->
+    <header class="bg-gradient-to-r from-teal-700 to-cyan-800 text-white shadow-md py-4 md:py-6 px-4 no-print">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-right gap-3">
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-3 md:space-x-reverse">
+                <div class="bg-white/10 p-2.5 rounded-xl border border-white/20">
+                    <svg class="w-7 h-7 text-cyan-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-tight">نظام تقييم برنامج ABLLS-R الشامل</h1>
+                    <p class="text-cyan-200 text-xs md:text-sm">منصة تقييم المهارات النمائية واللغوية واستخراج خطة الأهداف الفردية</p>
+                </div>
+            </div>
+            <div class="text-xs bg-cyan-900/60 px-3.5 py-1.5 rounded-lg border border-cyan-500/30 text-cyan-100 font-semibold shadow-sm">
+                تقييم مهارات السلوك واللغة الأساسية للتعلم
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-6xl w-full mx-auto p-2 md:p-6">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden print-shadow">
+            
+            <!-- شريط التبويبات العلوي المتجاوب والقابل للتمرير بنمط جيليام -->
+            <div class="flex overflow-x-auto border-b border-slate-200 bg-slate-50/50 no-print scrollbar-thin" id="tab-nav">
+                <button onclick="switchTab(0)" class="tab-btn flex-shrink-0 min-w-[150px] py-3.5 px-4 text-center font-bold text-xs md:text-sm text-teal-700 border-b-2 border-teal-600 bg-white transition-all flex items-center justify-center gap-1.5">
+                    <span>1. البيانات والأبعاد</span>
+                </button>
+                <button onclick="switchTab(1)" class="tab-btn flex-shrink-0 min-w-[150px] py-3.5 px-4 text-center font-bold text-xs md:text-sm text-slate-500 border-b-2 border-transparent hover:text-teal-700 transition-all flex items-center justify-center gap-1.5">
+                    <span>2. استمارة التقييم</span>
+                </button>
+                <button onclick="switchTab(2)" class="tab-btn flex-shrink-0 min-w-[150px] py-3.5 px-4 text-center font-bold text-xs md:text-sm text-slate-500 border-b-2 border-transparent hover:text-teal-700 transition-all flex items-center justify-center gap-1.5 bg-teal-50/50">
+                    <span class="text-teal-700">3. الخطة والتقرير</span>
+                </button>
+            </div>
+
+            <!-- محتوى النظام -->
+            <div>
+                <!-- المرحلة 1: البيانات الأولية واختيار الأبعاد -->
+                <div class="tab-content p-4 md:p-8 space-y-6" id="section-0">
+                    <div class="border-b border-slate-200 pb-4">
+                        <h2 class="text-lg md:text-xl font-bold text-slate-800 flex items-center">
+                            <span class="w-2.5 h-6 bg-teal-600 rounded-full ml-2"></span>
+                            القسم الأول: بيانات المفحوص وتحديد أبعاد القياس
+                        </h2>
+                        <p class="text-slate-500 text-xs md:text-sm mt-1">أدخل بيانات الطفل وحدد الأقسام المراد قياسها من برنامج ABLLS-R.</p>
+                    </div>
+
+                    <!-- إرشادات التقييم بنمط جيليام -->
+                    <div class="bg-gradient-to-br from-teal-50/80 to-cyan-50/80 border border-teal-200 rounded-2xl p-4 md:p-6 space-y-3">
+                        <h3 class="font-bold text-teal-900 text-sm md:text-base flex items-center">
+                            <svg class="w-5 h-5 text-teal-700 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            دليل خطوات وتوجيهات تطبيق التقييم:
+                        </h3>
+                        <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
+                            • في صفحة التقييم، يتم وضع علامة (✓) أمام المهارات التي <strong>يتقنها الطفل تماماً</strong> فقط.<br>
+                            • جميع المهارات والبنود التي <strong>لم يتم تفعيلها</strong> ستنتقل آلياً إلى الخطة الفردية وجداول المتابعة لتدريب الطفل عليها لاحقاً.
+                        </p>
+                    </div>
+
+                    <!-- شبكة بيانات الطفل والفاحص -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                        <div>
+                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-2">اسم الطفل / المفحوص:</label>
+                            <input type="text" id="childName" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:bg-white transition-all text-sm" placeholder="أدخل اسم الطفل رباعياً...">
+                        </div>
+                        <div>
+                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-2">اسم القائم بالتقييم (الأخصائي):</label>
+                            <input type="text" id="evaluatorName" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:bg-white transition-all text-sm" placeholder="أدخل اسم الأخصائي أو المقيم...">
+                        </div>
+                    </div>
+
+                    <!-- اختيار الأبعاد كبطاقات تفاعلية -->
+                    <div class="space-y-3 pt-2">
+                        <label class="block text-xs md:text-sm font-bold text-slate-800">اختر الأبعاد والمركبات المراد تقييمها:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5">
+                            
+                            <label class="cursor-pointer bg-white p-4 rounded-xl border border-slate-200 hover:border-teal-500 hover:bg-teal-50/20 transition-all flex items-start space-x-3 space-x-reverse shadow-sm">
+                                <input type="checkbox" name="dimension" value="basic" checked class="mt-1 w-4 h-4 accent-teal-600 rounded">
+                                <div>
+                                    <strong class="block text-sm font-bold text-slate-800">المهارات الأساسية للتعلم</strong>
+                                    <span class="text-xs text-slate-500 mt-0.5 block">المجالات (A إلى P)</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer bg-white p-4 rounded-xl border border-slate-200 hover:border-teal-500 hover:bg-teal-50/20 transition-all flex items-start space-x-3 space-x-reverse shadow-sm">
+                                <input type="checkbox" name="dimension" value="academic" checked class="mt-1 w-4 h-4 accent-teal-600 rounded">
+                                <div>
+                                    <strong class="block text-sm font-bold text-slate-800">المهارات الأكاديمية</strong>
+                                    <span class="text-xs text-slate-500 mt-0.5 block">المجالات (Q إلى T)</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer bg-white p-4 rounded-xl border border-slate-200 hover:border-teal-500 hover:bg-teal-50/20 transition-all flex items-start space-x-3 space-x-reverse shadow-sm">
+                                <input type="checkbox" name="dimension" value="self_care" checked class="mt-1 w-4 h-4 accent-teal-600 rounded">
+                                <div>
+                                    <strong class="block text-sm font-bold text-slate-800">مهارات الرعاية الذاتية</strong>
+                                    <span class="text-xs text-slate-500 mt-0.5 block">المجالات (U إلى X)</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer bg-white p-4 rounded-xl border border-slate-200 hover:border-teal-500 hover:bg-teal-50/20 transition-all flex items-start space-x-3 space-x-reverse shadow-sm">
+                                <input type="checkbox" name="dimension" value="motor" checked class="mt-1 w-4 h-4 accent-teal-600 rounded">
+                                <div>
+                                    <strong class="block text-sm font-bold text-slate-800">المهارات الحركية</strong>
+                                    <span class="text-xs text-slate-500 mt-0.5 block">المجالات (Y و Z)</span>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end pt-4 border-t border-slate-200">
+                        <button type="button" onclick="goToStep2()" class="w-full sm:w-auto bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-2.5 rounded-xl transition-all shadow-lg shadow-teal-700/20 text-sm flex items-center justify-center space-x-2 space-x-reverse">
+                            <span>الانتقال لبنود التقييم</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- المرحلة 2: استمارة تسجيل استجابات الطفل -->
+                <div class="tab-content p-4 md:p-8 space-y-6 hidden" id="section-1">
+                    <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div>
+                            <h2 class="text-lg md:text-xl font-bold text-slate-800 flex items-center">
+                                <span class="w-2.5 h-6 bg-teal-600 rounded-full ml-2"></span>
+                                القسم الثاني: تسجيل استجابات الطفل
+                            </h2>
+                            <p class="text-slate-500 text-xs md:text-sm mt-1">حدد (✓) أمام الأهداف التي يتقنها الطفل، والبنود غير المحددة ستُدرج تلقائياً في خطة العمل.</p>
+                        </div>
+                        <div class="bg-teal-50 text-teal-800 font-bold px-3.5 py-1.5 rounded-xl text-xs md:text-sm border border-teal-200 w-full sm:w-auto text-center">
+                            المتقن: <span id="masteredCount">0</span> بنداً
+                        </div>
+                    </div>
+
+                    <!-- حاوية بنود المجالات -->
+                    <div id="domainsContainer" class="space-y-6"></div>
+
+                    <div class="flex justify-between pt-4 border-t border-slate-200">
+                        <button type="button" onclick="switchTab(0)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-5 py-2.5 rounded-xl transition-all text-xs md:text-sm">السابق: البيانات</button>
+                        <button type="button" onclick="generateReport(); switchTab(2);" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl transition-all shadow-lg shadow-emerald-600/20 text-xs md:text-sm flex items-center space-x-1.5 space-x-reverse">
+                            <span>استخراج التقرير والخطة الفردية</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- المرحلة 3: التقرير وجدول الأهداف غير المتقنة -->
+                <div class="tab-content p-4 md:p-8 space-y-8 hidden" id="section-2">
+                    <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 no-print">
+                        <div>
+                            <h2 class="text-lg md:text-xl font-bold text-slate-800 flex items-center">
+                                <span class="w-2.5 h-6 bg-teal-600 rounded-full ml-2"></span>
+                                القسم الثالث: خطة الأهداف والمهارات غير المتقنة
+                            </h2>
+                            <p class="text-slate-500 text-xs md:text-sm mt-1">تقرير تفصيلي ببنود الخطة الفردية وجداول المتابعة الميدانية للإنجاز.</p>
+                        </div>
+                        <button type="button" onclick="window.print()" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl transition-all text-xs md:text-sm flex items-center justify-center space-x-2 space-x-reverse shadow-md">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                            <span>طباعة الخطة (PDF)</span>
+                        </button>
+                    </div>
+
+                    <!-- بطاقة معلومات التقرير بنمط جيليام -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 md:p-6 space-y-4">
+                        <div class="text-center pb-3 border-b border-slate-200">
+                            <h3 class="text-base md:text-lg font-bold text-teal-800">تقرير خطة الأهداف الفردية لبرنامج ABLLS-R</h3>
+                            <p class="text-slate-500 text-xs mt-1">قائمة المهارات المستهدفة للتدخل والتأهيل السلوكي والتربوي</p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 text-xs md:text-sm" id="reportHeader">
+                            <!-- تعبأ ديناميكياً -->
+                        </div>
+                    </div>
+
+                    <!-- حاوية جداول الخطة الفردية -->
+                    <div id="reportTablesContainer" class="space-y-6"></div>
+
+                    <div class="flex justify-between pt-4 border-t border-slate-200 no-print">
+                        <button type="button" onclick="switchTab(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-5 py-2.5 rounded-xl transition-all text-xs md:text-sm">تعديل الاستجابات</button>
+                        <button type="button" onclick="switchTab(0)" class="bg-teal-700 hover:bg-teal-800 text-white font-bold px-5 py-2.5 rounded-xl transition-all text-xs md:text-sm">بيانات طفل جديد</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- فوتر المطور المعتمد بنمط جيليام -->
+        <footer class="mt-6 text-center py-4 border-t border-slate-200 text-slate-500 text-xs md:text-sm">
+            تم التطوير بواسطة أخصائي التربية الخاصة: <strong class="text-teal-800">سنوسي معروف</strong> &copy; جميع الحقوق محفوظة
+        </footer>
+    </main>
+
+    <script>
+        // إبقاء كامل بيانات ABLLS-R الغنية بدون حذف أي بند
+        const abllsData = {
+            basic: [
+                {
+                    code: "A",
+                    name: "التعاون وفعالية المعزز",
+                    items: [
+                        { id: "A1", title: "أخذ المعزز حينما يُعرض عليه", text: "حينما يعرض شيء أو نشاط معزز للطفل، فإنه سيأخذه أو يستخدمه." },
+                        { id: "A2", title: "أخذ المعزز من ضمن اختيارين", text: "حينما يقدم للطفل شيء أو نشاط معزز، ومعه شيء أو نشاط آخر غير معزز، فإنه سيختار الشيء أو النشاط المعزز." },
+                        { id: "A3", title: "النظر لشيء غير معزز", text: "سينظر الطفل لشئ غير معزز حينما يعرضه عليه المعلم." },
+                        { id: "A4", title: "أخذ شيء مألوف حينما يقدم إليه", text: "يأخذ الطفل شيئاً مألوفاً حينما يقدم إليه." },
+                        { id: "A5", title: "يقترب للحصول على المعزز بعد أداء مهمة بسيطة", text: "يقترب الطفل من المعلم عند عرض معزز، ثم يقوم بأداء مهمة بسيطة حتى يحصل عليه." },
+                        { id: "A6", title: "الاستجابة للتعليمات للحصول على المعزز من المعلم", text: "سيسعى الطفل للحصول على المعزز من المعلم، ولذلك سيقوم بتنفيذ التعليمات التي تطلب منه." },
+                        { id: "A7", title: "الاستجابة للعديد من المعلمين", text: "يستخدم الطفل مهارات التعميم مع أكثر من معلم." },
+                        { id: "A8", title: "انتظر التعليمات بدون لمس الأدوات المعروضة أمامه", text: "ينتظر الطفل بهدوء، ويبقى يديه بعيدة عن الأدوات حتى يقدم المعلم له التعليمات المطلوبة." },
+                        { id: "A9", title: "النظر إلى المعلم للحصول على تعليمات", text: "ينظر الطفل إلى المعلم ليحصل على التعليمات." },
+                        { id: "A10", title: "فحص الأدوات قبل أداء المهمة", text: "عندما تقدم تعليمات للقيام بمهمة تعليمية، فإن الطفل يفهم التعليمات، ويفحص الأدوات قبل أداء المهمة." },
+                        { id: "A11", title: "يستجيب بسرعة عند إعطاء التعليمات", text: "يستجيب الطفل سريعاً عندما يقدم المعلم له التعليمات." },
+                        { id: "A12", title: "يستجيب للمعززات النشاطية (غير المأكولة)", text: "يؤدي الطفل المهام المطلوبة منه، لكي يحصل على لعبة أو أداة أو نشاط مفضل له." },
+                        { id: "A13", title: "يستجيب للتعزيز غير المنتظم", text: "سيسعي الطفل إلى الحصول علي تعزيز غير منتظم." },
+                        { id: "A14", title: "التفاعل مع المعلم كتعزيز", text: "يؤدي الطفل المهمة للحصول علي تفاعل ممتع مع المعلم." },
+                        { id: "A15", title: "يلاحظ تغيرات تعبيرات وجه وصوت المعلم", text: "بعد إنهاء الطفل للمهمة، فإنه سينظر إلى وجه المعلم، ويلاحظ التغييرات في تعبيرات وجهه وصوته، بحيث يفهم منها التأكيد على صحة المهمة التي قام بها." },
+                        { id: "A16", title: "الاستجابة للمعززات الاجتماعية", text: "للمديح دور فعال كمعزز للطفل." },
+                        { id: "A17", title: "الانتظار بصورة مناسبة في حالة تأخر تقديم المعزز", text: "سيتمكن الطفل من الانتظار بصورة مناسبة في حالة عدم تقديم المعزز مباشرة بعد أدائه للمهمة المطلوبة منه." },
+                        { id: "A18", title: "السعي للحصول على الاستحسان عند استكمال المهمة", text: "سيسعى الطفل للحصول على الاستحسان بعد انتهاء المهمة." },
+                        { id: "A19", title: "الانتهاء من المهمة يقوم بدور المعزز", text: "انتهاء الطفل من مهمة ما وإكمالها، يؤدي دور المعزز الفعال له." }
+                    ]
+                },
+                {
+                    code: "B",
+                    name: "الأداء البصري",
+                    items: [
+                        { id: "B1", title: "بازل ذات قطعة واحدة", text: "عند إعطاء الطفل قطع مفردة ذات أشكال مميزة، فإنه سيضع قطع البازل في مكانها." },
+                        { id: "B2", title: "وضع القطع المناسبة في صندوق الأشكال", text: "يضع الطفل القطع في الفتحات المماثلة لها في صندوق الأشكال." },
+                        { id: "B3", title: "مطابقة أشياء متماثلة", text: "حينما يقدم شيء ما للطفل، فإنه سيطابق بينه وبين شيء مماثل له." },
+                        { id: "B4", title: "مطابقة أشياء مع صور", text: "حينما يعطى الطفل شيئاً، فإنه سيطابق الشيء." },
+                        { id: "B5", title: "مطابقة صور متماثلة", text: "حينما تقدم صورة ما للطفل، فإنه سيطابق بينها وبين صورة مماثلة لها." },
+                        { id: "B6", title: "مطابقة صور مع أشياء", text: "حينما يعطى الطفل صورة لشيء ما، فإنه سيطابق الصورة بالشيء المماثل له على الطاولة." },
+                        { id: "B7", title: "المطابقة بطلاقة", text: "عند عرض مجموعة من الصور أو الأشياء، فإن الطفل سيطابق هذه الصور بالصور المماثلة لها في تتابع سريع." },
+                        { id: "B8", title: "فرز الأشياء أو الصور غير المتشابهة", text: "حينما يقدم للطفل مجموعة من الأشياء أو الصور غير المتشابهة، فإنه سيفرزها تبعاً للعنصر الذي تنتمي لها على الطاولة." },
+                        { id: "B9", title: "مطابقة مكعبات على كارت تصميم", text: "حينما يعطى للطفل عدد من المكعبات ومعها كارت للشكل المطلوب تكوينه، فإنه سيضع المكعبات في المكان المناسب على الكارت." },
+                        { id: "B10", title: "تركيب بازل داخل إطار غير مربع الشكل", text: "عند إعطاء الطفل قطع من البازل، فإنه سيضعها في مكانها داخل إطار غير مربع الشكل." },
+                        { id: "B11", title: "تركيب بازل داخل إطار مربع الشكل", text: "عند إعطاء الطفل قطع من البازل، فإنه سيضعها في مكانها داخل إطار مربع الشكل." },
+                        { id: "B12", title: "محاكاة نموذج مكعبات من خلال النظر إلى كارت التصميم", text: "حينما يعطى الطفل كارت تصميم ومكعبات، فإنه سيصمم المكعبات من خلال النظر إلى كارت التصميم، لتكوين الشكل الموجود بالكارت." },
+                        { id: "B13", title: "مطابقة نمط تتابع بصري", text: "حينما يُقدم للطفل نمط تتابع بصري، وعدة عناصر مماثلة للنمط (مثل مكعبات ملونة)، فإنه سيرتب هذه العناصر مطابقة للنمط الموجود أمامه." },
+                        { id: "B14", title: "تركيب بازل غير مربع الشكل، وبدون إطار خارجي", text: "عند إعطاء الطفل مجموعة من قطع البازل، فإنه سيركب هذه القطع لتكوين صورة غير مربعة الشكل (قطع البازل لا تركب في إطار)." },
+                        { id: "B15", title: "تركيب بازل مربع الشكل، وبدون إطار خارجي", text: "عند إعطاء الطفل لعبة الصور المقطعة (بدون إطار)، فإنه سيركب البازل بطريقة صحيحة." },
+                        { id: "B16", title: "مطابقة بحسب العلاقة", text: "عند إعطاء الطفل عدة عناصر من الأشياء أو الصور، فإنه سيطابق كل عنصر بعنصر آخر ذو علاقة به (مثل مطابقة المضرب بالكرة)." },
+                        { id: "B17", title: "تصنيف بحسب الوظيفة", text: "عند إعطاء الطفل عدة عناصر (صور أو أشياء)، ووضع عناصر أخرى مماثلة لها في الوظيفة على الطاولة، فإنه سيضع العناصر المعطاة له مع ما يماثلها." },
+                        { id: "B18", title: "تصنيف حسب السمة (ما يميز الشيء)", text: "عند إعطاء الطفل عدة عناصر (صور أو أشياء)، ووضع عناصر أخرى في سمة أو في جزء مميز على الطاولة، فإنه سيضع العناصر المعطاة له مع ما يشبهها في السمة أو الجزء المميز." },
+                        { id: "B19", title: "تصنيف حسب الفئة", text: "عند إعطاء الطفل عدة عناصر (صور أو أشياء)، ووضع عناصر أخرى مشتركة معها في الفئة على الطاولة، فإنه سيضع العناصر المعطاة له مع العناصر المشتركة معها في نفس الفئة." },
+                        { id: "B20", title: "استدعاء تتابع متأخر من الذاكرة", text: "بعد عرض نموذج من الأشياء في تتابع معين ثم إزالة هذا النموذج، فإن الطفل سيتمكن من عمل هذا النموذج بنفس الترتيب." },
+                        { id: "B21", title: "التعرف المتأخر على شيء عند عرضه مع أشياء أخرى", text: "عند عرض شيء معين وإخفاءه، ثم عرض ثلاثة أشياء أخرى (إحداها هو الشيء المعروض سابقا) فإن الطفل سيتمكن من التعرف عليه." },
+                        { id: "B22", title: "إكمال نمط التتابع", text: "عند عرض نموذج من عدة أشياء في تتابع معين، فإن الطفل سيتمكن من الاستمرار في إضافة هذه الأشياء وفقاً لتتابع الصحيح." },
+                        { id: "B23", title: "تكوين نموذج ثلاثي الأبعاد بعد مشاهدته", text: "عند عرض نموذج مكون من مكعبات أو غيرها من العناصر ثلاثية الأبعاد، فإن الطفل سيتمكن من تكوين هذا النموذج (مثل منزل، سيارة)." },
+                        { id: "B24", title: "سلسلة من المطابقة المرتبطة معه", text: "عندما يضع المعلم أشياء على الطاولة، فإن الطفل سيضع مع كل شيء الشيء الذي تربطه علاقة معه." },
+                        { id: "B25", title: "التسلسل والترتيب", text: "عند إعطاء الطفل نموذج تسلسل له بداية ونهاية، فإنه سيتمكن من ترتيب عناصر شبيهة بـه." },
+                        { id: "B26", title: "ترتيب أحداث القصة", text: "سيتمكن الطفل من ترتيب مجموعة من الصور في تتابعها الصحيح." },
+                        { id: "B27", title: "متاهات بسيطة", text: "سيتمكن الطفل من رسم خط من بداية حتى نهاية متاهة بسيطة." }
+                    ]
+                },
+                {
+                    code: "C",
+                    name: "اللغة الاستقبالية",
+                    items: [
+                        { id: "C1", title: "الاستجابة حينما ينادى على الطفل باسمه", text: "سينظر الطفل أو يأتي لشخص ما حينما يناديه باسمه." },
+                        { id: "C2", title: "اتباع التعليمات للقيام بنشاط ممتع في البيئة المناسبة", text: "سيتبع الطفل التعليمات للقيام بنشاط ممتع في سياقه الصحيح حينما يطلب منه ذلك." },
+                        { id: "C3", title: "ينظر للمعزز عندما يطلب منه", text: "سينظر الطفل لعنصر معزز يمسك به المعلم عند إعطائه التعليمات بذلك." },
+                        { id: "C4", title: "اتباع التعليمات لأخذ أو إمساك شيء معزز", text: "سيأخذ الطفل أو يمسك بمعزز عند تواجد المعزز في أي مكان، تنفيذاً لتعليمات المعلم." },
+                        { id: "C5", title: "اتباع التعليمات لأخذ أو إمساك شيء مألوف", text: "سيأخذ الطفل أو يمسك بشيء مألوف عند تواجد ذلك الشيء في أي مكان، تنفيذاً لتعليمات المعلم." },
+                        { id: "C6", title: "اتباع التعليمات للقيام بنشاط ممتع في مكان مختلف", text: "سيتبع الطفل التعليمات للقيام بنشاط ممتع، حتى إذا ما كان لا يحدث في هذا الوقت أو في هذا المكان." },
+                        { id: "C7", title: "اتباع التعليمات في مواقف روتينية معتادة", text: "سيتبع الطفل التعليمات للقيام بنشاط معتاد في المواقف الروتينية." },
+                        { id: "C8", title: "اتباع التعليمات لإعطاء المعلم شيء غير معزز", text: "سيتبع الطفل التعليمات التي تتطلب منه إعطاء المعلم شيء غير معزز." },
+                        { id: "C9", title: "اتباع التعليمات للقيام بنشاط حركي بسيط", text: "سيتبع الطفل التعليمات للقيام بمهمة حركية بسيطة مثلاً: (صفق، استدر، ارفع ذراعيك لأعلى)." },
+                        { id: "C10", title: "اتباع التعليمات لأخذ شيء ما في وجود عنصر مشتت", text: "سيأخذ الطفل شيء ما أو يمسكه عند الطلب منه، في ظل وجود عنصر آخر مشتت." },
+                        { id: "C11", title: "اتباع التعليمات لاختيار معزز في عرض من شيئين", text: "سيختار الطفل شئ معزز محدد، من عنصرين معروضين أمامه حينما يطلب منه ذلك." },
+                        { id: "C12", title: "اتباع التعليمات لاختيار معزز من شيئين كلاهما معزز", text: "سيتمكن الطفل من اختيار معزز يحدده المعلم من ضمن مجموعة من معززين معروضين أمامه حينما يطلب منه ذلك." },
+                        { id: "C13", title: "اتباع التعليمات لاختيار شيء مألوف من ضمن اثنان مألوفين", text: "سيتمكن الطفل من اختيار شيء يحدده المعلم من ضمن مجموعة من شيئين مألوفين عند عرضهما عليه." },
+                        { id: "C14", title: "اختيار صورة من صورتين مألوفتين", text: "سيتمكن الطفل من اختيار صورة يحددها المعلم من ضمن مجموعة من صورتين مألوفتين بالنسبة له." },
+                        { id: "C15", title: "لمس الطفل أعضاء الجسم الخاصة به", text: "سيتمكن الطفل من اتباع التعليمات لمس أعضاء من جسمه حينما يطلب منه ذلك." },
+                        { id: "C16", title: "اختيار واحد من ستة أشياء أو أكثر على الطاولة", text: "سيختار الطفل شيئاً محدداً حينما يُعرض هذا الشيء ضمن مجموعة من ستة أشياء أو أكثر." },
+                        { id: "C17", title: "اختيار صورة من ست صور أو أكثر على الطاولة", text: "سيختار الطفل صورة لشيء محدد حينما تعرض هذه الصورة ضمن مجموعة من ست صور أو أكثر." },
+                        { id: "C18", title: "اختيار أشياء أو صور جديدة دون تدريب مكثف", text: "سيتمكن الطفل من اختيار أشياء أو صور كثيرة جديدة دون الحاجة للتدريب أكثر من (5) مرات." },
+                        { id: "C19", title: "التمييز الاستقبالي بطلاقة", text: "يختار الطفل أو يشير إلى عناصر مألوفة في تتابع سريع، عندما تُعرض عليه ضمن مجموعة أكبر." },
+                        { id: "C20", title: "تعليمات مختلفة للاختيار", text: "سيتمكن الطفل من اختيار الأشياء والصور مع استخدام مجموعة متنوعة من التعليمات." },
+                        { id: "C21", title: "الإشارة لأعضاء الجسم الخاصة بالآخرين أو على الصور", text: "سيتمكن الطفل من اتباع التعليمات بالإشارة إلى أعضاء جسم الآخرين أو لمس صور لأعضاء الجسم." },
+                        { id: "C22", title: "لمس الملابس الخاصة بالطفل", text: "سيتمكن الطفل من اتباع التعليمات للمس الملابس التي يرتديها." },
+                        { id: "C23", title: "لمس أجزاء من عناصر", text: "يتبع الطفل التعليمات للمس أجزاء محددة من أشياء أو صور." },
+                        { id: "C24", title: "اختيار النعت (الصفات)", text: "سيتمكن الطفل من الاختيار ما بين عنصرين متماثلين، ولكن يختلفان في صفة واحدة." },
+                        { id: "C25", title: "يحدد أشياء باتباع نظرة الآخرين", text: "يحدد الطفل أشياء بالانتباه لاتجاه نظرة عين شخص آخر." },
+                        { id: "C26", title: "يتبع الإشارات الوصفية", text: "يتبع الطفل الإشارات الوصفية التي يقوم بها المعلم بيديه لكي يأتي أو يقعد أو يقف." },
+                        { id: "C27", title: "اتباع التعليمات للذهاب لشخص ما", text: "سيتمكن الطفل من السير خلال الحجرة للذهاب لشخص محدد." },
+                        { id: "C28", title: "وضع شيء على شيء آخر أو إعطاؤه لشخص", text: "سيتمكن الطفل من السير للذهاب لشخص محدد ووضع أو تسليم شيء." },
+                        { id: "C29", title: "الذهاب لشخص ما واحضار شيء محدد", text: "سيتمكن الطفل من السير عبر الحجرة للذهاب لشخص واحضار الشيء المطلوب." },
+                        { id: "C30", title: "الذهاب لشخص ما والقيام بنشاط", text: "سيتمكن الطفل من الذهاب لشخص معين والقيام بنشاط محدد (مثلاً سلم على وليد)." },
+                        { id: "C31", title: "اتباع التعليمات الصحيحة لاختيار العنصر المحدد", text: "سيتبع الطفل التعليمات الصحيحة لاختيار العنصر (المس، أشر إلى، اعطني، خذ)." },
+                        { id: "C32", title: "اختيار الشيء المناسب للقيام بنشاط ما", text: "سيمتثل الطفل للتعليمات للقيام بنشاط بسيط عند تقديم عدة أشياء أحداها يستخدم للنشاط." },
+                        { id: "C33", title: "يؤدي فعل بأشياء متعددة", text: "يؤدي الطفل فعل محدد باستخدام أشياء متعددة." },
+                        { id: "C34", title: "التظاهر بالقيام بفعل محدد", text: "سيمتثل الطفل للتعليمات للتظاهر أو تمثيل لأداء فعل محدد." },
+                        { id: "C35", title: "اختيار صورة من ثلاث صور تصف أفعال", text: "سيختار الطفل صورة تعبر عن فعل معين من ضمن مجموعة من ثلاث صور." },
+                        { id: "C36", title: "اختيار صور العلاقات", text: "يحدد العنصر الذي يستخدم مع ما اختاره المعلم عند سؤاله: ما الذي يصاحب هذا؟" },
+                        { id: "C37", title: "الاختيار وفقاً للوظيفة", text: "سيتمكن الطفل من اختيار الأشياء أو الصور حينما يتعرف على وظيفتها." },
+                        { id: "C38", title: "الاختيار وفقاً للسمة", text: "سيتمكن الطفل من اختيار الأشياء أو الصور حينما يتعرف على سماتها أو أجزائها." },
+                        { id: "C39", title: "الاختيار وفقاً للفئة", text: "سيتمكن الطفل من اختيار الأشياء أو الصور حينما يتعرف على الفئة التي تنتمي لها." },
+                        { id: "C40", title: "اختيار عنصرين من مجموعة أكبر", text: "سيختار الطفل عنصرين محددين من مجموعة كبيرة من العناصر معروضة على الطاولة." },
+                        { id: "C41", title: "اختيار شيئين في تتابع من مجموعة أكبر", text: "سيختار الطفل شيئين أو صورتين محددتين بالتتابع من ضمن مجموعة كبيرة." },
+                        { id: "C42", title: "اختيار صور مهن المجتمع", text: "سيتمكن الطفل من اختيار صور المهن المألوفة داخل نطاق بيئته." },
+                        { id: "C43", title: "تحديد العناصر المتشابهة في صورة معقدة", text: "سيتمكن الطفل من تحديد العناصر المتشابهة من خلال صورة أكبر وأكثر تعقيداً." },
+                        { id: "C44", title: "تحديد أشياء من خلال أجزاء منها", text: "سيتمكن الطفل من تحديد الأشياء حينما تعرض عليه فقط أجزاء منها داخل صورة مركبة." },
+                        { id: "C45", title: "تحديد الصورة بناءً على أصواتها", text: "سيختار الطفل صورة ملائمة حينما يسمع الصوت الذي يصاحب هذا الشيء." },
+                        { id: "C46", title: "اختيار كل أمثلة الشيء", text: "أن يتبع الطفل التعليمات لاختيار كل أمثلة الشيء المحدد." },
+                        { id: "C47", title: "اختيار شيء واحد به صفتين محددتين", text: "يتمكن الطفل من اختيار شيء محدد يتمتع بخاصيتين محددتين معاً." },
+                        { id: "C48", title: "اختيار مجموعة من الأشياء بناءً على صفة مميزة", text: "عند عرض مجموعة من الأشياء، سيستطيع الطفل اختيار عناصر تتشارك في صفة معينة." },
+                        { id: "C49", title: "اختيار مجموعة من العناصر بناءً على صفتين", text: "يتمكن الطفل من اختيار كل الأشياء أو الصور التي تتمتع بخاصيتين محددتين." },
+                        { id: "C50", title: "اتباع تعليمات بنفس الترتيب", text: "سيتمكن الطفل من اختيار ثلاثة أشياء وفقاً لتتابع محدد." },
+                        { id: "C51", title: "اتباع التعليمات تتضمن حروف الجر وظروف المكان", text: "سيتمكن الطفل من اتباع التعليمات التي تتضمن حروف الجر أو ظروف المكان." },
+                        { id: "C52", title: "اتباع تعليمات تتضمن ضمائر", text: "سيتمكن الطفل من اتباع التعليمات التي تتضمن ضمائر." },
+                        { id: "C53", title: "اختيار صور اماكن أو أنشطة", text: "سيتمكن الطفل من اختيار صور لأماكن أو لأنشطة." },
+                        { id: "C54", title: "اختيار صور تعبر عن انفعالات", text: "سيتمكن الطفل من اختيار صور وجوه تعبر عن انفعالات مختلفة." },
+                        { id: "C55", title: "اختيار المتماثل والمختلف", text: "سيختار الطفل الشيء المتماثل أو المختلف عند سؤاله عن ذلك." },
+                        { id: "C56", title: "اختيار اللا أمثلة (اللا ينتمي)", text: "سيتمكن الطفل من اختيار أشياء لا تعد أمثلة لهذه الفئة (مثلاً: ليس بطعام)." },
+                        { id: "C57", title: "اختيار صور التفاعل الاجتماعي", text: "سيتمكن الطفل من اختيار صور تمثل مجموعة من التفاعلات الاجتماعية (اللعب، الجدال)." }
+                    ]
+                },
+                {
+                    code: "D",
+                    name: "التقليد الحركي",
+                    items: [
+                        { id: "D1", title: "التقليد الحركي باستخدام الأشياء", text: "سيقلد الطفل نشاطاً حركياً مستخدماً شيء ما حينما يطلب منه ذلك." },
+                        { id: "D2", title: "التقليد الحركي بواسطة تمييز الشيء", text: "سيقلد الطفل نشاطاً حركياً يتطلب تمييزاً لشيء ما حينما يطلب منه ذلك." },
+                        { id: "D3", title: "تقليد حركي للحركات الكبرى بمساعدة لفظية", text: "سيقلد الطفل الحركات الكبرى عند توفير المحفزات اللفظية." },
+                        { id: "D4", title: "تقليد حركات الساق والقدم", text: "سيقلد الطفل أنشطة حركية كبرى تشتمل على حركات الساق والقدم." },
+                        { id: "D5", title: "تقليد حركات الذراع واليد", text: "سيقلد الطفل أنشطة حركية كبرى تشتمل على حركات الذراع واليد." },
+                        { id: "D6", title: "تمييز تقليد الحركات الثابتة والمتحركة", text: "أن يقلد الطفل أفعال متشابهة تتطلب التمييز سواء كان ثابتاً أو متحركاً." },
+                        { id: "D7", title: "تقليد أفعال في ظل تنوع التعليمات", text: "أن يقلد الطفل أفعال عندما تستخدم أي من التعليمات المتنوعة للتقليد." },
+                        { id: "D8", title: "تقليد الحركات الكبرى من خلال المرأة", text: "أن يقلد الطفل الحركات الكبرى التي يلاحظها في المرآة." },
+                        { id: "D9", title: "تقليد حركات الرأس", text: "سيقلد الطفل أنشطة حركية كبرى تشتمل على حركات الرأس." },
+                        { id: "D10", title: "تقليد حركات الفم واللسان", text: "سيقلد الطفل نشاط حركي يشتمل على حركات الفم واللسان." },
+                        { id: "D11", title: "تقليد حركات الوجه والشفاه في المرأة", text: "يقلد الطفل حركات الوجه والشفاه التي يلاحظها من الآخرين في المرآة." },
+                        { id: "D12", title: "تقليد حركي للحركات الدقيقة", text: "سيقلد الطفل نشاطاً حركياً دقيقاً حينما يطلب منه ذلك." },
+                        { id: "D13", title: "تقليد لمس الأشياء في تتابع", text: "أن يقلد الطفل لمس الأشياء في تتابع بالتزامن مع المعلم." },
+                        { id: "D14", title: "تقليد النفخ", text: "أن يقلد الطفل كل من النفخ القصير والمستمر." },
+                        { id: "D15", title: "تقليد سرعة فعل بالأشياء بالتزامن مع المعلم", text: "يقلد الطفل أنشطة حركية تتضمن التلاعب بالأشياء ومطابقة لسرعة المعلم." },
+                        { id: "D16", title: "تقليد سرعة فعل فوراً بعد توقف النموذج", text: "أن يقلد الأنشطة الحركية مطابقة لسرعة نموذج حديث." },
+                        { id: "D17", title: "تقليد سرعة النشاط الحركي الكلي", text: "سيقلد الطفل نشاطاً حركياً كلياً يطابق سرعة النموذج." },
+                        { id: "D18", title: "تقليد لمس أشياء في تسلسل متبعاً نموذج", text: "أن يقلد الطفل لمس الأشياء في تتابع بعد قيام المعلم بذلك." },
+                        { id: "D19", title: "تقليد سلسلة أفعال والتحول مع النموذج", text: "يقلد الطفل سلسلة أفعال حركية طويلة من نموذج يتغير فوراً." },
+                        { id: "D20", title: "تقليد تتابع أنشطة حركية", text: "سيقلد الطفل تتابعاً من الأنشطة الحركية." },
+                        { id: "D21", title: "تقليد شدة أو قوة الفعل", text: "يقلد الطفل الأنشطة الحركية الكبرى مطابقة لكثافة وشدة النموذج." },
+                        { id: "D22", title: "تقليد عدد تكرار الحركات", text: "يقلد الطفل نفس عدد تكرار الحركات كما في النموذج." },
+                        { id: "D23", title: "تقليد حركي ولفظي في نفس الوقت", text: "أن يقلد الطفل الحركات مصاحبة للأصوات." },
+                        { id: "D24", title: "تقليد سلسلة حركية باستخدام أشياء متعددة", text: "أن يقلد الطفل سلسلة من الأفعال مستخدماً أشياء متعددة." },
+                        { id: "D25", title: "تقليد الحركات تلقائياً بدون طلب لفظي", text: "سيقلد الطفل نشاطاً حركياً كلياً يقوم به فرد آخر دون أن يطلب منه لفظياً." },
+                        { id: "D26", title: "تقليد أنشطة الآخرين تلقائياً في البيئة", text: "سيقلد الطفل بتلقائية نشاطاً حركياً يقوم به أفراد آخرون في البيئة." },
+                        { id: "D27", title: "تقليد مؤجل", text: "سيتمكن الطفل من عرض الأنشطة التي لاحظها منذ فترة زمنية سابقة." }
+                    ]
+                },
+                {
+                    code: "E",
+                    name: "التقليد الصوتي",
+                    items: [
+                        { id: "E1", title: "تقليد مقاطع صوتية مفردة", text: "سيقلد الطفل مقاطع صوتية مفردة حينما تقول له (قل...)." },
+                        { id: "E2", title: "تقليد سلسلة من المقاطع الصوتية", text: "أن يكون الطفل قادر على تكرار مقاطع صوتية في تتابع سريع." },
+                        { id: "E3", title: "تقليد مقطع صوتي واحد من الكلمة", text: "سيتمكن من تقليد مقطع صوتي واحد من الكلمة على الأقل عند ذكرها له." },
+                        { id: "E4", title: "تقليد أزواج من مقاطع صوتية", text: "أن يكون الطفل قادر على تقليد أزواج من مقاطع صوتية متعددة." },
+                        { id: "E5", title: "تقليد قصر وطول الصوت", text: "يقلد الطفل الصوت مطابقاً لسرعة وإطالة صوت المعلم." },
+                        { id: "E6", title: "تقليد عدد تكرارات الصوت", text: "يكون الطفل قادر على تقليد الصوت بنفس عدد تكراره في النموذج." },
+                        { id: "E7", title: "تقليد مرن من الصوت الأول للثاني", text: "ينتقل بسلاسة من الصوت الأول للثاني دون فصل بينهما." },
+                        { id: "E8", title: "تقليد مزيج (ساكن - متحرك) و(متحرك - ساكن)", text: "أن يقلد تكرار مزيج من الأصوات كما يتطلب النموذج." },
+                        { id: "E9", title: "تقليد (ساكن - متحرك - ساكن - متحرك)", text: "يقلد مزيج مثل (ماما - بابا - بيبي)." },
+                        { id: "E10", title: "تقليد مزيج (ساكن - متحرك - ساكن)", text: "يقلد كلمات مثل (باب - قال - نام)." },
+                        { id: "E11", title: "تقليد مزيج ساكن", text: "يقلد كلمات تتكون من مزيج ساكن بدقة." },
+                        { id: "E12", title: "تقليد الكلمات عند الطلب", text: "سيقلد الطفل كلمة حينما تقول له (قل...)." },
+                        { id: "E13", title: "تقليد الجمل عند الطلب", text: "سيقلد الطفل جملة كاملة حينما يطلب منه ذلك." },
+                        { id: "E14", title: "تقليد تتابع الأرقام", text: "سيحاكي الطفل تتابع أرقام حينما تقول له: (قل...)." },
+                        { id: "E15", title: "تقليد سريع وبطيء للكلمات", text: "أن يكرر الكلمات التي تطابق سرعة الكلمة المقدمة." },
+                        { id: "E16", title: "تقليد الكلمات بأصوات مرتفعة ومنخفضة", text: "أن يكرر الكلمات التي تطابق علو أو انخفاض الصوت." },
+                        { id: "E17", title: "تقليد الكلمات بنبرات غليظة ورفيعة", text: "أن يكرر الطفل الكلمات المطابقة لطبقة ونغمة الصوت." },
+                        { id: "E18", title: "نقل رسالة قصيرة لشخص آخر", text: "أن يذهب الطفل لشخص ما، ويعيد عليه رسالة قصيرة طلب منه نقلها." },
+                        { id: "E19", title: "تقليد تلقائي للكلمات", text: "سيقلد الطفل كلمات يسمعها بصورة تلقائية." },
+                        { id: "E20", title: "تقليد تلقائي للجمل", text: "سيقلد الطفل الجمل بصورة تلقائية." }
+                    ]
+                },
+                {
+                    code: "F",
+                    name: "الطلب",
+                    items: [
+                        { id: "F1", title: "الطلب بالإشارة أو الجذب", text: "يحدد الأشياء بالإشارة إليها أو جذبها عند عدم توفر لغة منطوقة." },
+                        { id: "F2", title: "طلب المعزز بمساعدة", text: "يطلب ما يريد في وجود المعزز بمساعدة لفظية أو إشارية." },
+                        { id: "F3", title: "طلب المعزز المرئي مع السؤال ماذا تريد؟", text: "يطالب بما يريد في وجود المعزز باستخدام الكلمات أو الصور." },
+                        { id: "F4", title: "طلب المعزز في ظل عدم وجوده", text: "يطلب الأشياء التي يريدها حتى في ظل عدم وجودها أمامه." },
+                        { id: "F5", title: "طلبات تلقائية في وجود الشيء", text: "يطلب تلقائياً الأشياء المفضلة عندما تكون أمامه دون سؤال." },
+                        { id: "F6", title: "طلبات تلقائية مع عدم وجود الشيء", text: "يطلب تلقائياً أشياء يحتاجها بدون وجودها وبدون تلميح." },
+                        { id: "F7", title: "طلب مع التواصل البصري", text: "يقوم بالتواصل البصري بالعين عند طلب شيء أو نشاط." },
+                        { id: "F8", title: "مطالبة الآخرين بأداء نشاط ما", text: "يطلب من الآخرين أداء أنشطة محددة (مثل: ادفعني، احملني)." },
+                        { id: "F9", title: "المطالبة بأشياء ناقصة لازمة للنشاط", text: "يطلب الجزء المفقود اللازم لإكمال مهمة أو لعبة." },
+                        { id: "F10", title: "الطلب أو الرفض بنعم / لا", text: "يطلب أو يرفض الأشياء المعروضة مستعيناً برأسه أو بقول نعم/لا." },
+                        { id: "F11", title: "الطلب باستخدام جملة", text: "يطلب أشياء أو معلومات من خلال جملة مركبة." },
+                        { id: "F12", title: "طلب المساعدة", text: "يطلب مساعدة من الآخرين عندما يعجز عن أداء شيء ما." },
+                        { id: "F13", title: "اكتساب طلبات جديدة دون تدريب مكثف", text: "يتعلم طلبات جديدة بعد أقل من 5 محاولات تدريبية." },
+                        { id: "F14", title: "طلب انتباه الآخرين", text: "يطلب من الآخرين الانتباه لما يفعله (مثلاً: انظر لي)." },
+                        { id: "F15", title: "طلب إيقاف نشاط أو إبعاد شيء", text: "يطلب من الآخرين التوقف عن نشاط غير مرغوب أو إبعاد شيء." },
+                        { id: "F16", title: "الطلب باستخدام الصفات", text: "يطلب الأشياء باستخدام الصفات (مثلاً: قلم أحمر، عصير كبير)." },
+                        { id: "F17", title: "الطلب بحروف الجر وظروف المكان", text: "يطلب الأشياء باستخدام حروف الجر (مثلاً: في الصندوق، فوق)." },
+                        { id: "F18", title: "طلب أشياء وأحداث مستقبلية", text: "يطلب أشياء أو أنشطة قد يحصل عليها مستقبلاً (غداً، بعد قليل)." },
+                        { id: "F19", title: "طلب معلومات باستخدام ماذا", text: "يطرح أسئلة لمعرفة ما هذا؟ أو ماذا تفعل؟" },
+                        { id: "F20", title: "طلب معلومات باستخدام أين", text: "يطرح أسئلة لمعرفة مكان الأشخاص أو الأشياء المفقودة." },
+                        { id: "F21", title: "طلب معلومات باستخدام من / لمن", text: "يطرح أسئلة لمعرفة هوية الشخص أو ملكية الشيء." },
+                        { id: "F22", title: "الطلب باستخدام الحال", text: "يطلب الأنشطة باستخدام الحال (مثلاً: ادفعني بسرعة)." },
+                        { id: "F23", title: "الطلب باستخدام الضمائر", text: "يطلب الأشياء باستخدام الضمائر (أريد قبعتك، لعبتي)." },
+                        { id: "F24", title: "طلب معلومات باستخدام أي من", text: "يطرح أسئلة للاختيار باستخدام أداة أي من." },
+                        { id: "F25", title: "طلب معلومات باستخدام متى", text: "يطرح أسئلة لمعرفة زمن حدوث نشاط معين." },
+                        { id: "F26", title: "طلب معلومات باستخدام كيف", text: "يطرح أسئلة لمعرفة كيفية صنع الأشياء أو عملها." },
+                        { id: "F27", title: "طلب الإذن (هل يمكن / هل أستطيع)", text: "يطلب الإذن للقيام بنشاط محدد." },
+                        { id: "F28", title: "طلب معلومات باستخدام لماذا", text: "يطرح أسئلة لمعرفة سبب حدوث الأشياء." },
+                        { id: "F29", title: "طلبات تلقائية طوال اليوم", text: "يطلب الطفل احتياجاته بأسلوب تلقائي وتلقائي متكرر طوال اليوم." }
+                    ]
+                },
+                {
+                    code: "G",
+                    name: "التسمية (تسمية الأشياء)",
+                    items: [
+                        { id: "G1", title: "تسمية المعززات", text: "يسمي المعززات عند سؤاله: ما هذا؟" },
+                        { id: "G2", title: "تسمية الأشياء المألوفة", text: "يسمي الأشياء المألوفة في بيئته." },
+                        { id: "G3", title: "تسمية الأشخاص المألوفين", text: "يسمي الأشخاص المحيطين به عند السؤال: من هذا؟" },
+                        { id: "G4", title: "تسمية صور الأشياء المألوفة", text: "يسمي بطاقات وصور الأشياء المألوفة." },
+                        { id: "G5", title: "تسمية أجزاء الجسم", text: "يسمي أجزاء الجسم على نفسه وعلى الآخرين." },
+                        { id: "G6", title: "تسمية قطع الملابس", text: "يستطيع تسمية قطع الملابس المختلفة." },
+                        { id: "G7", title: "تسمية أنشطة مألوفة في البيئة", text: "يسمي الأفعال الحية التي يراها أمامه." },
+                        { id: "G8", title: "تسمية صور لأنشطة مألوفة", text: "يسمي صور الأفعال والأنشطة (يشرب، ينام)." },
+                        { id: "G9", title: "التسمية بطلاقة", text: "تسمية صور وأشياء معروضة في تتابع سريع." },
+                        { id: "G10", title: "اكتساب مسميات جديدة دون تدريب مكثف", text: "يتعلم تسمية أشياء جديدة بعد أقل من 5 محاولات." },
+                        { id: "G11", title: "تسمية الأشياء بضمير المتكلم", text: "يسمي الأشياء الخاصة به مستخدماً (أنا / ملكي) في جملة." },
+                        { id: "G12", title: "تسمية أجزاء الأشياء أو سماتها", text: "يسمي أجزاء الأشياء (عجلة السيارة، مقبض الباب)." },
+                        { id: "G13", title: "تسمية الصفات", text: "يسمي صفات الأشياء (الألوان، الأحجام، الأشكال)." },
+                        { id: "G14", title: "تسمية صور العلاقات", text: "يسمي العنصر الذي يرتبط بصورة معروضة أمامه." },
+                        { id: "G15", title: "تسمية الأشياء عند معرفة وظيفتها", text: "يسمي الشيء عند إخباره بوظيفته واستخدامه." },
+                        { id: "G16", title: "تسمية الأشياء عند معرفة سماتها", text: "يسمي الشيء عند وصف صفاته وأجزائه فقط." },
+                        { id: "G17", title: "تسمية الشيء عند معرفة فئته", text: "يسمي أعضاء الفئة عند إخباره باسم الفئة." },
+                        { id: "G18", title: "تسمية شيئين عند عرضهما معاً", text: "يسمي عنصرين معاً عند تقديمهما في وقت واحد." },
+                        { id: "G19", title: "تسمية عدة أشياء داخل صورة مركبة", text: "يسمي أكثر من عنصر داخل مشهد أو صورة واحدة." },
+                        { id: "G20", title: "تسمية شيئين تلقائياً في جملة", text: "يسمي شيئين معاً داخل جملة واحدة تلقائياً." },
+                        { id: "G21", title: "تسمية نشاط يتضمن اسماً وفعلاً", text: "يسمي جملة من (اسم + فعل) مثل: الولد يأكل." },
+                        { id: "G22", title: "تسمية صورة بها (اسم وصفة)", text: "يسمي جملة من (اسم + صفة) مثل: سيارة حمراء." },
+                        { id: "G23", title: "تسمية الأشياء بنعم أو لا", text: "يجيب بنعم أو لا عند سؤاله: هل هذا كذا؟" },
+                        { id: "G24", title: "تسمية وظيفة الشيء", text: "يسمي ماذا نفعل بهذا الشيء عند عرضه عليه." },
+                        { id: "G25", title: "تسمية فئة الشيء", text: "يسمي فئة الشيء (مثلاً: التفاح فاكهة)." },
+                        { id: "G26", title: "الإجابة على أسئلة متعددة لشيء واحد", text: "يميز بين الإجابة عن الاسم، اللون، أو الوظيفة لنفس الشيء." },
+                        { id: "G27", title: "تسمية الأسماء داخل الفئة", text: "ينظر لفئة محددة ويسمي العناصر التي تنتمي إليها." },
+                        { id: "G28", title: "تسمية الأجزاء المفقودة أو السخيفة في الصورة", text: "يسمي الجزء المفقود أو غير الصحيح في صورة." },
+                        { id: "G29", title: "تسمية العنصر الدخيل", text: "يسمي العنصر الذي لا ينتمي للمجموعة." },
+                        { id: "G30", title: "تسمية المشاكل الواضحة", text: "يسمي مشكلة أو موقفاً طارئاً (مثلاً: العصير انسكب)." },
+                        { id: "G31", title: "تسمية مهن المجتمع", text: "يسمي صور أصحاب المهن (طبيب، نجار)." },
+                        { id: "G32", title: "تسمية أشياء بعيدة يُشار إليها", text: "يسمي أشياء بعيدة في البيئة عند إشارة الآخرين لها." },
+                        { id: "G33", title: "تسمية الأصوات المألوفة في البيئة", text: "يسمي مصدر الصوت المسموع في البيئة المحيطة." },
+                        { id: "G34", title: "تسمية الصفات بضمير المتكلم", text: "يصف أفعاله أو ملابسه بضمير المتكلم وصفة مناسبة." },
+                        { id: "G35", title: "تسمية حروف الجر وظرف المكان", text: "يسمي موضع الشيء (فوق، تحت، بجانب)." },
+                        { id: "G36", title: "التسمية بجملة تتضمن ظرف مكان", text: "يسمي موقع الشيء داخل جملة تامة." },
+                        { id: "G37", title: "تسمية الضمائر", text: "يسمي الضمائر (هو، هي، هم)." },
+                        { id: "G38", title: "استخدام ضمير المخاطب في جملة", text: "يستخدم ضمير (أنت) في كلامه دون مساعدة." },
+                        { id: "G39", title: "وصف أحداث ومشاهد كاملة", text: "يصف مشهداً ونشاطاً متكاملاً في صورة سردية." },
+                        { id: "G40", title: "تسمية أجزاء معينة من المشاهد", text: "يحدد ويسمي تفاصيل معينة داخل مشهد معقد." },
+                        { id: "G41", title: "تسمية الظروف", text: "يسمي الظروف الحالية (بسرعة، ببطء)." },
+                        { id: "G42", title: "تسمية انفعالات الآخرين", text: "يسمي المشاعر وتعبيرات الوجه (فرحان، غضبان، حزين)." },
+                        { id: "G43", title: "تسمية الانفعالات والأحداث الداخلية", text: "يسمي مشاعره وأحاسيسه الداخلية (أنا جائع، متألم)." },
+                        { id: "G44", title: "نطق جملة من ثلاثة عناصر", text: "يستخدم جملاً وصفية تتكون من 3 كلمات منفصلة على الأقل." },
+                        { id: "G45", title: "جملة طويلة تتضمن ضمير المتكلم", text: "يستخدم جملاً من 3 عناصر فأكثر تبدأ بضمير المتكلم أنا." },
+                        { id: "G46", title: "تسمية سلوكيات التفاعل الاجتماعي", text: "يسمي طبيعة التفاعل القائم بين أفراد (يلعبون، يتشاجرون)." },
+                        { id: "G47", title: "تسمية تلقائية", text: "يسمي الأشياء والأحداث تلقائياً دون توجيه سؤال." }
+                    ]
+                },
+                {
+                    code: "H",
+                    name: "الحوار (استخدامات الألفاظ)",
+                    items: [
+                        { id: "H1", title: "إكمال أغاني بكلمات", text: "يكمل الكلمات الناقصة في أغنية مألوفة." },
+                        { id: "H2", title: "إكمال الجملة المألوفة بكلمة", text: "يكمل جملة مألوفة بالكلمة الناقصة." },
+                        { id: "H3", title: "استعمال إشارة وصفية للأشياء", text: "يستخدم إشارة جسدية تعبر عن الكلمة المنطوقة." },
+                        { id: "H4", title: "أصوات الحيوانات", text: "يسمي الحيوان عند سماع صوته أو العكس." },
+                        { id: "H5", title: "الإجابة على أسئلة المعلومات الشخصية", text: "يجيب عن اسمه، عمره، واسم والديه." },
+                        { id: "H6", title: "ذكر كلمات تصف أنشطة مألوفة", text: "يكمل الجملة الدالة على نشاط يومي." },
+                        { id: "H7", title: "ذكر العلاقات باستخدام الألفاظ", text: "يذكر ما يتناسب مع الشيء المحدد لفظياً." },
+                        { id: "H8", title: "ذكر اسم الشيء عند معرفة وظيفته", text: "يذكر اسم الشيء عند سؤاله: بماذا نأكل؟ بماذا نكتب؟" },
+                        { id: "H9", title: "ذكر وظيفة الشيء عند ذكر اسمه", text: "يذكر ماذا نفعل بالقلم، بالملعقة." },
+                        { id: "H10", title: "أسئلة بماذا تخص أشياء المنزل", text: "يجيب عن أسئلة تخص أدوات وأثاث المنزل." },
+                        { id: "H11", title: "أسئلة بماذا تخص وظائف الأشياء", text: "يجيب عن وظائف واستخدامات الأدوات المختلفة." },
+                        { id: "H12", title: "أسئلة بأين تخص أماكن الأشياء", text: "يجيب عن مكان وجود الأغراض المألوفة." },
+                        { id: "H13", title: "أسئلة بأين تخص أنشطة المنزل والمدرسة", text: "يجيب أين ننام؟ أين نغسل أيدينا؟" },
+                        { id: "H14", title: "تسمية أعضاء الفئة", text: "يذكر أمثلة على الفئة (حيوانات، فواكه)." },
+                        { id: "H15", title: "استجابات متعددة لفئة محددة", text: "يذكر 3 عناصر على الأقل لنفس الفئة." },
+                        { id: "H16", title: "إكمال الجملة بسمة الشيء", text: "يذكر سمة الشيء المميزة له." },
+                        { id: "H17", title: "تسمية الشيء من خلال سماته (فوازير)", text: "يخمن اسم الشيء عند وصف سماته له." },
+                        { id: "H18", title: "تسمية فئة الشيء", text: "يكمل الجملة باسم الفئة التي ينتمي إليها الشيء." },
+                        { id: "H19", title: "تسمية أشياء سبق ملاحظتها", text: "يسترجع من الذاكرة ما رآه قبل قليل." },
+                        { id: "H20", title: "تسمية أنشطة لاحظها سابقاً", text: "يسترجع الأفعال التي شاهدها في وقت سابق." },
+                        { id: "H21", title: "تسمية أشخاص شاهدهم سابقاً", text: "يذكر من قابلهم أو رآهم في وقت سابق." },
+                        { id: "H22", title: "التعليق على الصور في حوار", text: "يبدي ملاحظات وتعليقات حول تفاصيل الصور." },
+                        { id: "H23", title: "أسئلة بماذا تخص أشياء المجتمع", text: "يجيب عما نراه في الحديقة أو الشارع أو السوبرماركت." },
+                        { id: "H24", title: "أسئلة بماذا تخص أنشطة المجتمع", text: "يجيب عما نفعله عند الطبيب أو في المتجر." },
+                        { id: "H25", title: "أسئلة بأين تخص أماكن وأنشطة المجتمع", text: "يجيب أين نشتري الخبز؟ أين نلعب؟" },
+                        { id: "H26", title: "إجابات متعددة تخص البيئة المباشرة", text: "يقدم خيارات وإجابات متعددة لسؤال واحد." },
+                        { id: "H27", title: "تسمية الفئة عند سماع عناصرها", text: "يذكر اسم الفئة عند سماع مجموعة عناصر منها." },
+                        { id: "H28", title: "الإجابة عن أسئلة من / لمن", text: "يجيب عن هوية الأشخاص وأصحاب المهن والملكيات." },
+                        { id: "H29", title: "الإجابة عن أسئلة متى", text: "يجيب متى ننام؟ متى نأكل؟" },
+                        { id: "H30", title: "التمييز بين أدوات الاستفهام", text: "يميز بين ما يُطلب منه سواء كان زمناً، مكاناً، أو شخصاً." },
+                        { id: "H31", title: "الإجابة عن أسئلة أي", text: "يحدد الاختيار المناسب عند السؤال بأي." },
+                        { id: "H32", title: "الإجابة عن أسئلة كيف", text: "يجيب عن كيفية عمل الأشياء أو الوصول للأماكن." },
+                        { id: "H33", title: "الإجابة عن أسئلة لماذا", text: "يقدم سبباً منطقياً عند سؤاله بلماذا." },
+                        { id: "H34", title: "وصف خطوات نشاط يومي بتسلسل", text: "يشرح خطوات غسل اليدين أو تنظيف الأسنان بالترتيب." },
+                        { id: "H35", title: "تسمية النشاط من خطواته", text: "يعرف اسم النشاط عند سرد خطواته أمامه." },
+                        { id: "H36", title: "تسمية الشيء من وظيفته وسمته وفئته", text: "يستنتج اسم الشيء عند جمع ثلاث معلومات عنه." },
+                        { id: "H37", title: "الإجابة بنعم/لا عن قدرة الأشياء", text: "يجيب هل يطير الفيل؟ هل تسبح السمكة؟" },
+                        { id: "H38", title: "أسئلة بمثيرين مهمين", text: "يجيب عن أسئلة تجمع شرطين (حيوانات تعيش في الماء)." },
+                        { id: "H39", title: "أسئلة بثلاث مثيرات مهمة", text: "يجيب عن أسئلة تجمع 3 شروط متزامنة." },
+                        { id: "H40", title: "وصف الأشياء بتفصيل", text: "يصف الشيء بذكر استخداماته وأجزائه وفئته." },
+                        { id: "H41", title: "وصف خطوات ما قبل وما بعد الحدث", text: "يوضح ماذا نفعل قبل الخروج وماذا نفعل بعد العودة." },
+                        { id: "H42", title: "أسئلة عن أحداث سابقة ومستقبلية", text: "يتحدث عما حدث بالأمس وعما سيحدث غداً." },
+                        { id: "H43", title: "إقامة حوار متبادل", text: "يتبادل أطراف الحديث لـ 3 جولات حوارية مع شخص آخر." },
+                        { id: "H44", title: "الإجابة عن أسئلة بصيغ جديدة", text: "يفهم الأسئلة المطروحة بأساليب مختلفة ويجيب عنها." },
+                        { id: "H45", title: "إجابة عن أحداث جارية مألوفة", text: "يجيب عن أحداث تقع حالياً في بيئته القريبة." },
+                        { id: "H46", title: "إجابات متعددة للأحداث الجارية", text: "يقدم تفاصيل موسعة عن مواضيع وأحداث معاصرة." },
+                        { id: "H47", title: "المشاركة في نقاشات المجموعة", text: "يقدم إجابات متعددة أثناء المناقشات الصفية." },
+                        { id: "H48", title: "حكي وقص قصة بسيطة", text: "يسرد قصة أو موقفاً يتضمن 5 عناصر مترابطة." },
+                        { id: "H49", title: "إجراء حوار تلقائي مستمر", text: "يشارك في حوار عفوي بتعليقات ذات صلة دون انقطاع." }
+                    ]
+                },
+                {
+                    code: "I",
+                    name: "النطق التلقائي",
+                    items: [
+                        { id: "I1", title: "إصدار أصوات مميزة", text: "ينطق أصواتاً ومقاطع صوتية مختلفة تلقائياً." },
+                        { id: "I2", title: "نطق كلمات تلقائياً", text: "ينطق كلمات واضحة تلقائياً في سياقات مختلفة." },
+                        { id: "I3", title: "نطق جمل تلقائياً", text: "ينطق جملاً مفيدة تلقائياً أثناء أنشطته." },
+                        { id: "I4", title: "غناء أغاني مع نموذج", text: "يغني مع الآخرين أو مع وسائط مسجلة." },
+                        { id: "I5", title: "غناء أغاني بمفرده", text: "يغني بمفرده تلقائياً دون نموذج مباشر." },
+                        { id: "I6", title: "محاكاة صوتية تلقائية", text: "يردد الكلمات التي يسمعها تلقائياً." },
+                        { id: "I7", title: "طلبات تلقائية متكررة", text: "يطلب احتياجاته عفوياً دون سؤال." },
+                        { id: "I8", title: "تسمية تلقائية للأشياء", text: "يسمي ما يراه حوله بتلقائية." },
+                        { id: "I9", title: "محادثة تلقائية ومداخلات", text: "يبادر بإبداء تعليقات متصلة بالموقف." }
+                    ]
+                },
+                {
+                    code: "J",
+                    name: "القواعد اللغوية (النحو)",
+                    items: [
+                        { id: "J1", title: "متوسط طول الجملة", text: "يتحدث في جمل مناسبة من حيث الطول." },
+                        { id: "J2", title: "التركيب اللغوي الصحيح", text: "يرتب الكلمات في الجملة تركيباً صحيحاً." },
+                        { id: "J3", title: "استخدام أداة التعريف (الـ)", text: "يستخدم الـ التعريفية في موضعها المناسب." },
+                        { id: "J4", title: "الفعل المضارع", text: "يصرف الأفعال في صيغة المضارع بدقة." },
+                        { id: "J5", title: "جمع التكسير", text: "يستخدم صيغ جمع التكسير الشائعة بشكل صحيح." },
+                        { id: "J6", title: "الفعل الماضي", text: "يستخدم صيغة الفعل الماضي للدلالة على المنتهي." },
+                        { id: "J7", title: "استخدام المثنى", text: "يستخدم صيغ التثنية للأشياء المزدوجة." },
+                        { id: "J8", title: "استخدام فعل الأمر", text: "يستخدم صيغ الطلب والأمر بشكل صحيح." },
+                        { id: "J9", title: "تاء الفاعل والمخاطب", text: "يوظف التاء في نهاية الأفعال بدقة." },
+                        { id: "J10", title: "ضمائر الملكية المتصلة", text: "يستخدم ضمائر الملكية (كتابي، بيته)." },
+                        { id: "J11", title: "أساليب النفي", text: "يستخدم أدوات النفي (لا، مش، لم)." },
+                        { id: "J12", title: "ظروف المكان", text: "يوظف ظروف المكان داخل الجمل." },
+                        { id: "J13", title: "صيغة المستقبل", text: "يستخدم السين أو سوف للتعبير عن المستقبل." },
+                        { id: "J14", title: "حروف العطف والربط", text: "يربط الجمل باستخدام (و، ثم، أو)." },
+                        { id: "J15", title: "جمع المذكر والمؤنث", text: "يستخدم صيغ الجمع السالم بانتظام." },
+                        { id: "J16", title: "صيغ التفضيل والمقارنة", text: "يستخدم أكبر من، أحسن من، الأفضل." },
+                        { id: "J17", title: "أسماء الإشارة", text: "يوظف هذا، هذه، هؤلاء بصورة صحيحة." },
+                        { id: "J18", title: "أدوات التأكيد", text: "يستخدم كلمات التأكيد في الإجابة." },
+                        { id: "J19", title: "أدوات التحديد والعموم", text: "يستخدم كل، بعض، دائماً، أحياناً." },
+                        { id: "J20", title: "وصف الحالة الانفعالية لغوياً", text: "يعبر عن انفعالاته بجمل نحوية سليمة." }
+                    ]
+                },
+                {
+                    code: "K",
+                    name: "مهارات اللعب ووقت الفراغ",
+                    items: [
+                        { id: "K1", title: "استكشاف ألعاب البيئة", text: "يتعرف ويستكشف الألعاب المتوفرة حوله." },
+                        { id: "K2", title: "السماح للآخرين باللعب بجواره", text: "يتقبل وجود أقران أو كبار يلعبون قربه." },
+                        { id: "K3", title: "أنشطة اللعب خارج المنزل أو الفصل", text: "يشارك في أنشطة الملاعب والأماكن المفتوحة." },
+                        { id: "K4", title: "أنشطة مستقلة داخل الفصل أو المنزل", text: "يشغل وقت فراغه بنشاط مستقل هادف." },
+                        { id: "K5", title: "اللعب بالألعاب وفقاً للوظيفة المصممة لها", text: "يستخدم اللعبة استخداماً صحيحاً وظيفياً." },
+                        { id: "K6", title: "اللعب المستقل مع التفاعل اللفظي", text: "يصدر أصواتاً وكلمات مصاحبة للعب." },
+                        { id: "K7", title: "أداء ألعاب ترتبط بفكرة معينة", text: "يلعب ألعاباً موضوعية (أدوات المطبخ، أدوات الطبيب)." },
+                        { id: "K8", title: "بداية اللعب التفاعلي مع الأقران", text: "يبادر بالتفاعل واللعب التشاركي مع الأطفال." },
+                        { id: "K9", title: "اللعب التفاعلي مع مجموعات أقران", text: "يندمج في ألعاب مع أكثر من طفل في وقت واحد." },
+                        { id: "K10", title: "اللعب التمثيلي والاجتماعي الخيالي", text: "يمثل أدواراً خيالية واجتماعية أثناء اللعب." },
+                        { id: "K11", title: "التحدث مع الأقران أثناء اللعب", text: "يتحاور ويعلق مع أصدقائه أثناء اللعب المشترك." },
+                        { id: "K12", title: "تبادل رمي وركل الكرة مع الأقران", text: "يلعب ألعاب الكرة التبادلية لـ 5 مرات متتالية." },
+                        { id: "K13", title: "اتباع توجيهات الأقران أثناء اللعبة", text: "يستجيب لقواعد وتوجيهات أصدقائه في اللعبة." },
+                        { id: "K14", title: "الألعاب التفاعلية الحركية المنظمة", text: "يشارك في ألعاب حركية جماعية تتطلب انتباهاً." },
+                        { id: "K15", title: "ألعاب الطاولة والمجلس وقواعدها", text: "يلعب ألعاب الطاولة البسيطة ملتزماً بالقواعد." }
+                    ]
+                },
+                {
+                    code: "L",
+                    name: "التفاعل الاجتماعي",
+                    items: [
+                        { id: "L1", title: "التصرف بهدوء قرب الأقران والإخوة", text: "يبقى هادئاً بدون مشكلات سلوكية قرب الآخرين." },
+                        { id: "L2", title: "أخذ الأشياء المقدمة من الآخرين", text: "يتقبل أخذ الأشياء من الكبار والأطفال." },
+                        { id: "L3", title: "الاستجابة للتلامس البدني الإيجابي", text: "يتقبل المصافحة، العناق، وكفك من الآخرين." },
+                        { id: "L4", title: "إظهار الاهتمام بسلوك وأفعال الأقران", text: "يتابع باهتمام ما يفعله الأطفال الآخرون." },
+                        { id: "L5", title: "النظر للآخرين لبدء تفاعل اجتماعي", text: "ينظر في عيون الآخرين طلباً للتفاعل معهم." },
+                        { id: "L6", title: "مشاركة الآخرين في الأنشطة", text: "يقترب من أقرانه لينضم لأنشطتهم القائمة." },
+                        { id: "L7", title: "النظر للشخص للحصول على النتيجة المرغوبة", text: "ينظر للشخص منتظراً استكمال أمر ممتع." },
+                        { id: "L8", title: "اتباع تعليمات بسيطة من الآخرين", text: "يتبع التعليمات البسيطة الصادرة من الأفراد." },
+                        { id: "L9", title: "محاكاة سلوك الأقران", text: "يقلد الأفعال الإيجابية التي يقوم بها أصدقاؤه." },
+                        { id: "L10", title: "الرد على التحية", text: "يرد التحية عندما يلقي عليه أحد السلام." },
+                        { id: "L11", title: "مساعدة الآخرين بدنياً", text: "يحث أصدقاءه ويوجههم بدنياً للعب معه." },
+                        { id: "L12", title: "الاستجابة لدعوات الأقران للتفاعل", text: "يوافق ويندمج عند دعوة الأقران له للعب." },
+                        { id: "L13", title: "السماح للآخرين باستخدام أشيائه", text: "يشارك ممتلكاته وألعابه مع زملائه." },
+                        { id: "L14", title: "البحث عن الشخص الغائب", text: "يلتفت ويبحث عن الشخص المألوف إذا غادر المكان." },
+                        { id: "L15", title: "طلب انتباه الأقران له", text: "ينظر ليرى من يتابعه ويطلب منهم مشاهدته." },
+                        { id: "L16", title: "تسمية الأشياء للأقران تلقائياً", text: "يشير للأشياء ويسميها لزملائه عفوياً." },
+                        { id: "L17", title: "التواصل البصري أثناء الحديث", text: "يحافظ على التواصل بالعين طوال فترة التفاعل." },
+                        { id: "L18", title: "طلب الأشياء من الأقران", text: "يطلب الألعاب والأدوات من أصدقائه مباشرة." },
+                        { id: "L19", title: "طلب مشاركة الآخرين في ألعابهم", text: "يستأذن للانضمام لممتلكات وألعاب غيره." },
+                        { id: "L20", title: "تقديم وعرض الأشياء على الآخرين", text: "يعرض أدواته على أصدقائه ليشاركونه فيها." },
+                        { id: "L21", title: "المبادرة بإلقاء التحية", text: "يبادر بإلقاء السلام والتحية على القادمين." },
+                        { id: "L22", title: "الانضمام للأقران في نشاط قائم", text: "ينضم بنعومة لنشاط مستمر يمارسه الأطفال." },
+                        { id: "L23", title: "ملاحظة اهتمامات زملائه", text: "ينتبه لما يثير شغف واهتمام أصدقائه." },
+                        { id: "L24", title: "تعديل سلوكه بناءً على توجيه الأقران", text: "يتقبل نقد أو نصح الزملاء لتعديل تصرفه." },
+                        { id: "L25", title: "التوافق مع تغيرات تصرفات الزملاء", text: "يعدل طريقة لعبه وتصرفه وفقاً لأفعال رفاقه." },
+                        { id: "L26", title: "مساعدة الآخرين على المشاركة", text: "يفسح المجال ويرتب الأدوات ليشارك الجميع." },
+                        { id: "L27", title: "معرفة ما يحبه وما يكرهه أصدقاؤه", text: "يعرف التفضيلات الخاصة بكل صديق له." },
+                        { id: "L28", title: "لفت انتباه الصديق لما يفضله", text: "يخبر صديقه بوجود لعبة أو أمر يفضله." },
+                        { id: "L29", title: "مراعاة مشاعر الآخرين واستجاباتهم", text: "ينتبه لمدى سعادة أو استياء صديقه من تصرف معين." },
+                        { id: "L30", title: "إيصال الرسائل للآخرين", text: "ينقل كلاماً أو رسالة بين شخصين بنجاح." },
+                        { id: "L31", title: "انتظار الوقت الملائم للحديث", text: "لا يقاطع الآخرين وينتظر هدوء الحديث ليبدأ." },
+                        { id: "L32", title: "الحوار التبادلي لـ 3 مرات", text: "يتحاور مع شخص لثلاث دورات كلامية متتالية." },
+                        { id: "L33", title: "السؤال عن معلومات بفضول اجتماعي", text: "يسأل أصدقاءه عما يفعلونه أو يمتلكونه." },
+                        { id: "L34", title: "جذب انتباه الصديق قبل الحديث", text: "ينادي صديقه وينتظر انتباهه قبل مخاطبته." }
+                    ]
+                },
+                {
+                    code: "M",
+                    name: "التفاعل ضمن مجموعة",
+                    items: [
+                        { id: "M1", title: "الجلوس المناسب في مجموعة صغيرة", text: "يجلس بهدوء في مجموعة صغيرة دون تشتيت الآخرين." },
+                        { id: "M2", title: "الجلوس المناسب في مجموعة كبيرة", text: "يجلس منضبطاً في الطابور أو المجموعات الكبيرة." },
+                        { id: "M3", title: "الانتباه للمعلم وسط المجموعة", text: "يركز بصرياً وسمعياً مع المعلم أثناء الدرس الجماعي." },
+                        { id: "M4", title: "الانتباه لإجابات الأطفال الآخرين", text: "يتابع استجابات وإجابات زملائه في الحلقة." },
+                        { id: "M5", title: "اتباع التعليمات العامة للمجموعة", text: "ينفذ الأوامر الموجهة للجميع (مثلاً: قوموا جميعاً)." },
+                        { id: "M6", title: "اتباع التعليمات الجماعية مع التمييز", text: "يميز التعليمات الموجهة له ضمن مجموعة (الأولاد فقط)." },
+                        { id: "M7", title: "رفع اليد للمشاركة في نشاط مفضل", text: "يرفع يده مبدياً رغبته في نشاط محبب." },
+                        { id: "M8", title: "رفع اليد للإجابة عن سؤال بسيط", text: "يرفع يده منتظراً الإذن بالإجابة عن سؤال مباشر." },
+                        { id: "M9", title: "رفع اليد وتسمية الشيء المعروض", text: "يرفع يده لتسمية ما يعرضه المعلم أمام الصف." },
+                        { id: "M10", title: "رفع اليد للإجابة عن سؤال موجه للمجموعة", text: "يبادر برفع يده للمشاركة في الأسئلة العامة." },
+                        { id: "M11", title: "انتظار دوره في الأنشطة الجماعية", text: "ينتظر وصول دوره بصبر أثناء الألعاب الجماعية." },
+                        { id: "M12", title: "تعلم مهارات أكاديمية جديدة وسط المجموعة", text: "يستوعب المهارات الجديدة ضمن الشرح الجماعي." }
+                    ]
+                },
+                {
+                    code: "N",
+                    name: "روتين الفصل (النظام داخل الفصل)",
+                    items: [
+                        { id: "N1", title: "اتباع الروتين اليومي باستقلالية", text: "يتحرك في الفصل وفق الجدول الروتيني دون توجيه دائم." },
+                        { id: "N2", title: "العمل المستقل في أنشطة غير أكاديمية", text: "ينجز المهام الروتينية غير الصفية بمفرده." },
+                        { id: "N3", title: "الجلوس والانتظار بين النشاطين", text: "ينتظر بهدوء في مقعده خلال فترات التبديل بين الحصص." },
+                        { id: "N4", title: "الانتقال المنظم للنشاط التالي", text: "ينتقل من ركن لآخر أو من قاعة لأخرى بنظام." },
+                        { id: "N5", title: "انتظار الدور في أنشطة الفصل", text: "يلتزم بدوره في التمارين الصفية." },
+                        { id: "N6", title: "الوقوف في الطابور والصف عند الطلب", text: "يلتزم بموقعه في الصف منتظراً دون دفع لزملائه." },
+                        { id: "N7", title: "العمل المستقل في الأنشطة الأكاديمية", text: "ينجز تدريباته وواجباته في ورقة العمل بمفرده." },
+                        { id: "N8", title: "إحضار وإرجاع أدواته الخاصة", text: "يخرج أدواته من حقيبته ويعيدها إلى مكانها." },
+                        { id: "N9", title: "تسليم العمل المنجز للمعلم", text: "يسلم مهمته للمعلم فور إنهائها أو يضعها بمكانها." },
+                        { id: "N10", title: "الانتظار المنظم أثناء التنقلات العامة", text: "يقف وينتظر باحترام في الممرات وفترات الانتقال." }
+                    ]
+                },
+                {
+                    code: "P",
+                    name: "تعميم الاستجابة",
+                    items: [
+                        { id: "P1", title: "التعميم عبر المثيرات المتنوعة", text: "يطبق المهارة مع صور وأشياء مختلفة عن أدوات التدريب." },
+                        { id: "P2", title: "التعميم عبر المعلمين والأشخاص", text: "يستجيب للمهارة مع أخصائيين ومعلمين وأفراد جدد." },
+                        { id: "P3", title: "التعميم عبر البيئات المختلفة", text: "يطبق المهارة بالمنزل والمدرسة والشارع والعيادة." },
+                        { id: "P4", title: "استخدام المهارة وسط مجموعات الأقران", text: "يطبق ما تعلمه بشكل فردي وسط المجموعات." },
+                        { id: "P5", title: "تعميم الاستجابات والبدائل اللفظية", text: "يستخدم إجابات وصيغاً مرادفة متنوعة لنفس الموقف." },
+                        { id: "P6", title: "تعميم مهارات اللغة والتواصل", text: "يوظف الكلمات المكتسبة في مجالات طلب وتسمية وحوار." }
+                    ]
+                }
+            ],
+            academic: [
+                {
+                    code: "Q",
+                    name: "القراءة",
+                    items: [
+                        { id: "Q1", title: "التعرف على الحروف الهجائية", text: "يميز الحروف الهجائية استماعاً وإشارة." },
+                        { id: "Q2", title: "تسمية ونطق الحروف الهجائية", text: "يسمي وينطق أسماء الحروف بصوت مسموع." },
+                        { id: "Q3", title: "التعرف على أصوات الحروف (الفونكس)", text: "يختار الحرف المطابق للصوت المسموع." },
+                        { id: "Q4", title: "تسمية أصوات الحروف", text: "يصدر الصوت الصحيح للحرف المعروض أمامه." },
+                        { id: "Q5", title: "مطابقة الكلمات بالصور", text: "يطابق الكلمة المكتوبة بالصورة المعبرة عنها." },
+                        { id: "Q6", title: "مطابقة كلمة مكتوبة بأخرى", text: "يطابق الكلمات حتى مع اختلاف نوع وحجم الخط." },
+                        { id: "Q7", title: "تسمية حروف الكلمة بالترتيب الصحيح", text: "يسمي حروف الكلمة من اليمين لليسار." },
+                        { id: "Q8", title: "مطابقة حروف منفصلة بكلمة مكتوبة", text: "يطابق الحروف المستقلة بمواضعها داخل الكلمة." },
+                        { id: "Q9", title: "ملء الحرف الناقص في الكلمة", text: "يكمل الكلمة الناقصة حرفاً بالاستعانة بصورة." },
+                        { id: "Q10", title: "قراءة الكلمات البسيطة", text: "يقرأ كلمات شائعة من مقطعين أو ثلاثة." },
+                        { id: "Q11", title: "قراءة كلمات جديدة غير مألوفة", text: "يتهجى ويقرأ كلمات جديدة بالاعتماد على الفونكس." },
+                        { id: "Q12", title: "قراءة جمل بسيطة من 3 كلمات", text: "يقرأ جملاً قصيرة من 3 كلمات بدقة." },
+                        { id: "Q13", title: "قراءة جمل مركبة (3 إلى 6 كلمات)", text: "يقرأ جملاً طويلة مسترسلة بطلاقة." },
+                        { id: "Q14", title: "إكمال الفراغ بالكلمة المناسبة", text: "يختار الكلمة التي تتم معنى الجملة المقروءة." },
+                        { id: "Q15", title: "قراءة وتنفيذ تعليمات الورقة والقلم", text: "يقرأ التعليمات وينفذها (ضع دائرة، ارسم خطاً)." },
+                        { id: "Q16", title: "قراءة وتنفيذ أوامر سلوكية حركية", text: "يقرأ أمراً حركياً ويطبقه عملياً (قف، افتح الباب)." },
+                        { id: "Q17", title: "قراءة فقرة والإجابة عن أسئلتها", text: "يقرأ نصاً قصيراً ويجيب عن أسئلة الفهم القرائي." }
+                    ]
+                },
+                {
+                    code: "R",
+                    name: "الحساب",
+                    items: [
+                        { id: "R1", title: "العد الآلي حتى 10 مع مساعدة", text: "يواصل العد لـ 10 عند بدء المعلم بالأرقام الأولى." },
+                        { id: "R2", title: "العد الآلي المستقل حتى 100", text: "يعد شفهياً حتى رقم 100 بصورة مستقلة." },
+                        { id: "R3", title: "عد الأشياء بمساعدة حتى 10", text: "يعد عناصر ملموسة حتى 10 مع توجيه بسيط." },
+                        { id: "R4", title: "عد عناصر عشوائية مبعثرة", text: "يعد عناصر معروضة أمامه حتى لو لم تكن في صف." },
+                        { id: "R5", title: "إخراج عدد محدد من مجموعة أكبر", text: "يستخرج 5 مكعبات من صندوق يحتوي 20 مكعباً." },
+                        { id: "R6", title: "تسمية الأرقام في تسلسل", text: "يسمي الأرقام المكتوبة بالترتيب." },
+                        { id: "R7", title: "تسمية الأرقام العشوائية حتى 100", text: "يتعرف على الرقم المكتوب ويسميه حتى 100." },
+                        { id: "R8", title: "مطابقة الرقم بالكمية المقابلة", text: "يطابق الرمز الرقمي بعدد العناصر الملموسة." },
+                        { id: "R9", title: "مفهوم كمية كثير", text: "يميز ويسمي المجموعة التي تحوي كمية أكثر." },
+                        { id: "R10", title: "مفهوم كمية قليل", text: "يميز ويسمي المجموعة ذات الكمية الأقل." },
+                        { id: "R11", title: "مفهوم جزء / بعض", text: "يتعرف على مفهوم بعض أو جزء من الشيء." },
+                        { id: "R12", title: "مفهوم الكل", text: "يميز المجموعة الكاملة أو الشيء ككل." },
+                        { id: "R13", title: "مفهوم صفر / لا شيء", text: "يتعرف على الصفر للدلالة على غياب العناصر." },
+                        { id: "R14", title: "إضافة عناصر لبلوغ كمية مستهدفة", text: "يكمل عناصر المجموعة لتصل للعدد المطلوب." },
+                        { id: "R15", title: "مفهوم كميات متساوية (مثل)", text: "يميز المجموعات ذات الكميات المتماثلة." },
+                        { id: "R16", title: "مفهوم كميات مختلفة", text: "يميز المجموعات غير المتساوية في العدد." },
+                        { id: "R17", title: "مفهوم أكبر من", text: "يحدد المجموعة أو الرقم الأكبر." },
+                        { id: "R18", title: "مفهوم أضف / زود", text: "يفهم ويطبق أمر زيادة العناصر." },
+                        { id: "R19", title: "المشي وجلب كمية محددة من مسافة", text: "ينتقل لمسافة ويجلب عدداً محدداً من العناصر." },
+                        { id: "R20", title: "الجمع البسيط مع الترحيل", text: "يحل مسائل الجمع الحسابي باليد." },
+                        { id: "R21", title: "قراءة الساعة وتحديد الوقت", text: "يحدد الوقت بدقة على الساعة الرقمية والعادية." },
+                        { id: "R22", title: "تسمية العملات النقدية بأسمائها", text: "يسمي الجنيه، الريال، الفئات النقدية المتداولة." },
+                        { id: "R23", title: "تسمية قيم الفئات النقدية", text: "يسمي القيمة المالية لكل ورقة أو عملة نقدية." },
+                        { id: "R24", title: "تبادل الفئات النقدية المتكافئة", text: "يبادل الفئات الصغيرة بما يكافئها من فئة أكبر." },
+                        { id: "R25", title: "تسمية الكميات المتساوية", text: "يؤكد لفظياً على تساوي كميتين." },
+                        { id: "R26", title: "تسمية الكميات غير المتساوية", text: "يؤكد لفظياً على عدم تكافؤ كميتين." },
+                        { id: "R27", title: "مفهوم الطرح (ناقص)", text: "يفهم إشارة الطرح وعملية إنقاص العناصر." },
+                        { id: "R28", title: "مفهوم الجمع (زائد)", text: "يفهم إشارة الجمع وعملية ضم المجموعات." },
+                        { id: "R29", title: "تطبيق عمليات الطرح الحسابية", text: "يستبعد عناصر لحل مسألة الطرح بنجاح." }
+                    ]
+                },
+                {
+                    code: "S",
+                    name: "الكتابة",
+                    items: [
+                        { id: "S1", title: "التخطيط والشخبطة بالقلم", text: "يمسك القلم ويترك علامات عشوائية على الورقة." },
+                        { id: "S2", title: "التلوين داخل حدود وإطار محدد", text: "يلون المساحة دون الخروج عن الحدود المرسومة." },
+                        { id: "S3", title: "تتبع الخطوط المستقيمة والمنحنية بالقلم", text: "يسير بالقلم فوق النقاط والخطوط المرسومة." },
+                        { id: "S4", title: "تتبع الأشكال والحروف والأرقام", text: "يسير بالقلم فوق نقاط الحروف والأرقام بدقة." },
+                        { id: "S5", title: "نسخ الخطوط المستقيمة", text: "ينقل نموذج خط مستقيم بمفرده." },
+                        { id: "S6", title: "نسخ الخطوط المنحنية والدوائر", text: "ينقل خطوطاً منحنية وأشكالاً دائرية." },
+                        { id: "S7", title: "نسخ ونقل الحروف الهجائية", text: "ينقل الحرف المرسوم أمامه باستقلالية." },
+                        { id: "S8", title: "نسخ ونقل الأرقام", text: "ينقل الأرقام بالنظر للنموذج المكتوب." },
+                        { id: "S9", title: "كتابة الحروف غيباً بدون نموذج", text: "يكتب الحروف الهجائية إملاءً دون بطاقة مساعدة." },
+                        { id: "S10", title: "كتابة الأرقام غيباً بدون نموذج", text: "يكتب الأرقام الحسابية المطلوبة غيباً." }
+                    ]
+                },
+                {
+                    code: "T",
+                    name: "الهجاء",
+                    items: [
+                        { id: "T1", title: "مطابقة الحروف بكلمات بسيطة", text: "يطابق حروفاً مجسمة بكلمة مكونة من 5 أحرف." },
+                        { id: "T2", title: "إكمال الحرف الناقص في كلمة مع صورة", text: "يكمل الكلمة بوضع الحرف الهجائي المفقود." },
+                        { id: "T3", title: "نقل ونسخ كلمات كاملة", text: "ينسخ كلمات مألوفة تصل لـ 6 أحرف." },
+                        { id: "T4", title: "كتابة الحرف الناقص غيباً", text: "يكتب الحرف المفقود بالقلم عند رؤية الصورة." },
+                        { id: "T5", title: "هجاء الكلمات شفهياً", text: "يتهجى حروف الكلمة بالصوت شفهياً." },
+                        { id: "T6", title: "إملاء الكلمات كتابياً", text: "يكتب الكلمات المملوءة عليه كتابة صحيحة." },
+                        { id: "T7", title: "تهجئة وكتابة اسمه الشخصي", text: "يتهجى ويكتب اسمه كاملاً بدون أخطاء." }
+                    ]
+                }
+            ],
+            self_care: [
+                {
+                    code: "U",
+                    name: "ارتداء الملابس",
+                    items: [
+                        { id: "U1", title: "رفع البنطال وإنزاله للمرحاض", text: "يتحكم في رفع وإنزال سرواله بمفرده عند الحمام." },
+                        { id: "U2", title: "ارتداء وخلع الحذاء البسيط", text: "ينتعل حذاءه ويخلعه بدون مساعدة (دون رباط)." },
+                        { id: "U3", title: "ارتداء البلوفر والكنزة وخلعها", text: "يرتدي ويخلع القمصان المقفولة بمفرده." },
+                        { id: "U4", title: "ارتداء وخلع القمصان ذات الأزرار", text: "يدخل ذراعيه ويخلع القميص المفتوح باستقلالية." },
+                        { id: "U5", title: "ارتداء البنطال كاملاً", text: "يدخل ساقيه ويرتدي السروال بمفرده." },
+                        { id: "U6", title: "ارتداء وخلع الجوارب", text: "يلبس الجورب بطريقة صحيحة مع اتجاه الكعب." },
+                        { id: "U7", title: "ارتداء وخلع المعطف والجاكيت", text: "يرتدي معطفه ويخلعه ويعلقه بمفرده." },
+                        { id: "U8", title: "فتح وسحب السحاب (السوستة)", text: "يفتح سحاب الملابس والحقائب بسهولة." },
+                        { id: "U9", title: "إغلاق السحاب المشبوك", text: "يسحب السحاب لأعلى لإغلاقه بعد تعشيقه." },
+                        { id: "U10", title: "تعشيق وإغلاق السحاب بالكامل", text: "يركب طرفي السحاب ويسحبه لأعلى بمفرده." },
+                        { id: "U11", title: "تزرير وفك أزرار الملابس", text: "يدخل الأزرار في العروات المخصصة ويغلقها." },
+                        { id: "U12", title: "قفل وفتح الكبسونة المعدنية", text: "يضغط الكبسونة لتثبيتها ويفتحها بيديه." },
+                        { id: "U13", title: "استخدام إبزيم الحزام والأحذية", text: "يدخل الحزام في الإبزيم ويحكم إغلاقه." },
+                        { id: "U14", title: "هندمة الملابس وضبط مظهرها", text: "يعدل ياقة القميص وينفض ملابسه عند الحاجة." },
+                        { id: "U15", title: "عقد وربط أربطة الحذاء", text: "يربط رباط الحذاء بإحكام بمفرده." }
+                    ]
+                },
+                {
+                    code: "V",
+                    name: "تناول الطعام",
+                    items: [
+                        { id: "V1", title: "تناول الأطعمة بالأصابع", text: "يتناول قطع الفواكه والبسكويت بأصابعه باستقلالية." },
+                        { id: "V2", title: "الشرب بواسطة الشفاطة (الشاليموه)", text: "يمص السوائل بالشفاطة دون سكبها." },
+                        { id: "V3", title: "الشرب من الكوب المفتوح", text: "يمسك الكوب بكلتا يديه ويشرب دون إراقة." },
+                        { id: "V4", title: "استخدام الملعقة والشوكة في الأكل", text: "يغرف ويأكل وجبته مستخدماً أدوات المائدة." },
+                        { id: "V5", title: "فرد ودهن الأطعمة بالسكين", text: "يفرد الزبد أو الجبن على الخبز بالسكين البلاستيكي." },
+                        { id: "V6", title: "سكب السوائل في الكوب", text: "يسكب الماء من الإبريق في كوبه بحذر." },
+                        { id: "V7", title: "تقطيع الأطعمة اللينة بالسكين", text: "يقطع قطع الخضار اللينة أو الكعك بالسكين." },
+                        { id: "V8", title: "حمل وجبته لطاولة الطعام", text: "ينقل صحنه وصينيته لمكان الأكل بثبات." },
+                        { id: "V9", title: "تنظيف ورفع الأطباق بعد الفراغ", text: "ينظف مكانه ويرفع أطباقه لحوض الغسيل." },
+                        { id: "V10", title: "الحفاظ على النظافة أثناء تناول الطعام", text: "يأكل بنظافة مستخدماً المناديل دون فوضى." }
+                    ]
+                },
+                {
+                    code: "W",
+                    name: "التزين (الهندام)",
+                    items: [
+                        { id: "W1", title: "غسل اليدين بالماء والصابون", text: "يفرك يديه بالصابون تحت الصنبور بصورة صحيحة." },
+                        { id: "W2", title: "تجفيف اليدين بالمنشفة", text: "يجفف يديه بالمنشفة أو المجفف بالكامل." },
+                        { id: "W3", title: "غسل الوجه بالماء", text: "يغسل وجهه وينظفه باستقلالية." },
+                        { id: "W4", title: "تجفيف الوجه", text: "يجفف وجهه بالمنشفة بلطف." },
+                        { id: "W5", title: "تمشيط وتصفيف الشعر", text: "يمسك المشط ويسرح شعره بمفرده أمام المرآة." },
+                        { id: "W6", title: "تنظيف الأسنان بالفرشاة والمعجون", text: "يفرش أسنانه بحركات صحيحة ويبصق المعجون." },
+                        { id: "W7", title: "استخدام المناديل لتنظيف الأنف", text: "يتمخط وينظف أنفه بالمنديل عند الحاجة." }
+                    ]
+                },
+                {
+                    code: "X",
+                    name: "استعمال المرحاض",
+                    items: [
+                        { id: "X1", title: "التبول في المرحاض عند توجيهه", text: "يتبول داخل كرسي المرحاض عند دخوله." },
+                        { id: "X2", title: "البقاء جافاً وفق جدول زمني محدد", text: "يحافظ على جفاف ملابسه بالانتظام على جدول الحمام." },
+                        { id: "X3", title: "الذهاب للتبول باستقلالية في مكان مألوف", text: "يدخل الحمام بمفرده ويتبول دون طلب المعلم." },
+                        { id: "X4", title: "طلب دخول الحمام والتعبير عن الحاجة", text: "يعبر شفهياً أو إشارياً برغبته في قضاء حاجته." },
+                        { id: "X5", title: "تنظيف الذات بعد التبول", text: "يستخدم الماء أو المناديل للتنظيف بعد التبول." },
+                        { id: "X6", title: "التبرز داخل المرحاض", text: "يقضي حاجته في المرحاض بصورة منتظمة." },
+                        { id: "X7", title: "التحكم في التبرز وفق مواعيد محددة", text: "يحافظ على نظافة ثيابه الداخلية من التبرز." },
+                        { id: "X8", title: "تنظيف الذات بعد التبرز (شطف / مسح)", text: "يتمكن من تنظيف نفسه جيداً بعد التبرز." },
+                        { id: "X9", title: "استخدام الحمام كاملاً للتبرز باستقلالية", text: "يقوم بكامل دورة استخدام الحمام للتبرز دون إشراف." },
+                        { id: "X10", title: "استخدام مراحيض الأماكن العامة", text: "يستعمل الحمامات العامة غير المألوفة دون رهبة وبنظافة." }
+                    ]
+                }
+            ],
+            motor: [
+                {
+                    code: "Y",
+                    name: "المهارات الحركية الكبرى",
+                    items: [
+                        { id: "Y1", title: "المشي للأمام بخطوات متزنة", text: "يسير للأمام باتزان وتنسيق حركي سليم." },
+                        { id: "Y2", title: "الركوع والنهوض منه", text: "ينزل لوضع الركوع وينهض بمرونة." },
+                        { id: "Y3", title: "الجري والعدو الخفيف المتزن", text: "يجري لمسافات مناسبة دون تعثر." },
+                        { id: "Y4", title: "التدحرج الجانبي على البساط", text: "يتدحرج بجسده جانباً على فرشة الرياضة." },
+                        { id: "Y5", title: "القفز للأمام بكلتا القدمين", text: "يثب للأمام مع هبوط متزامن للقدمين." },
+                        { id: "Y6", title: "القفز للأسفل من حافة مرتفعة", text: "يقفز من درجة أو صندوق منخفض للأرض بثبات." },
+                        { id: "Y7", title: "المشي للخلف بخطوات متتالية", text: "يسير للخلف عدة خطوات دون أن يلتفت أو يقع." },
+                        { id: "Y8", title: "القفز المتكرر في نفس المكان", text: "ينط في موضعه بكلتا قدميه لمرات متتابعة." },
+                        { id: "Y9", title: "رمي الكرة للأعلى أو من مستوى الصدر", text: "يقذف كرة متوسطة الحجم لشخص يقف أمامه." },
+                        { id: "Y10", title: "دحرجة الكرة على الأرض نحو هدف", text: "يدحرج الكرة بيديه لتصل لزميله." },
+                        { id: "Y11", title: "صعود الدرج بحركة قدم تبادلية", text: "يصعد السلم واضعاً قدماً في كل درجة باستقلال." },
+                        { id: "Y12", title: "الزحف على البطن لمسافة متر", text: "يزحف زحفاً عسكرياً على الأرض بسلاسة." },
+                        { id: "Y13", title: "جلوس القرفصاء والنهوض", text: "يقرفص ويلتقط شيئاً من الأرض ثم يقف." },
+                        { id: "Y14", title: "المشي فوق عارضة التوازن", text: "يسير فوق لوح ضيق أو خط مرسوم دون السقوط." },
+                        { id: "Y15", title: "التقاط الكرة المقذوفة نحوه", text: "يمسك كرة متوسطة بكلتا يديه وصدره." },
+                        { id: "Y16", title: "ركوب الدراجة ثلاثية العجلات", text: "يبدل بالدواسات ويقود دراجة ثلاثية بمهارة." },
+                        { id: "Y17", title: "المشي الجانبي بخطوات عرضية", text: "يسير جانبياً مع فتح وضم القدمين." },
+                        { id: "Y18", title: "الحجل والوثب بقدم واحدة", text: "يقفز على رجل واحدة لعدة خطوات." },
+                        { id: "Y19", title: "التوازن على قدم واحدة لمدة 3 ثوانٍ", text: "يقف متزناً على رجل واحدة دون استناد." },
+                        { id: "Y20", title: "ركل الكرة الثابتة نحو الهدف", text: "يسدد الكرة بقدمه للأمام بقوة واتجاه سليم." },
+                        { id: "Y21", title: "التعلق على العقلة ورفع الجسم", text: "يمسك العقلة ويتعلق معلقاً وزنه لثوانٍ." },
+                        { id: "Y22", title: "التقاط الكرة باليدين فقط دون الصدر", text: "يمسك الكرة بكفيه وأصابعه دون ضمها لصدره." },
+                        { id: "Y23", title: "قذف الكرة بيديه لأسفل لتصطدم بالأرض", text: "يضرب الكرة بالأرض لترتد للأعلى." },
+                        { id: "Y24", title: "رمي الكرة في الهواء والتقاطها", text: "يقذف الكرة لأعلى ويمسك بها بنفسه." },
+                        { id: "Y25", title: "تنطيط الكرة المتتالي على الأرض", text: "ينطط الكرة بيده على الأرض 3 مرات متتالية." },
+                        { id: "Y26", title: "ركل كرة متحركة أمامه", text: "يجري ويركل كرة تتدحرج نحوه." },
+                        { id: "Y27", title: "التحكم في حركة الساقين أثناء الدوران", text: "يتحكم في وضعيات جسده أثناء التمارين الحركية." },
+                        { id: "Y28", title: "الوثب الرشيق وتجاوز الحواجز", text: "يقفز برشاقة متجاوزاً خطوطاً أو حبالاً منخفضة." },
+                        { id: "Y29", title: "القفز فوق حاجز أو رافعة منخفضة", text: "يجتاز حواجز بارتفاع مناسب بقفزة نظيفة." },
+                        { id: "Y30", title: "قيادة دراجة هوائية واستخدام المكابح", text: "يقود دراجة بإتقان ويوقفها بالمكابح في الوقت المناسب." }
+                    ]
+                },
+                {
+                    code: "Z",
+                    name: "المهارات الحركية الصغرى",
+                    items: [
+                        { id: "Z1", title: "مسك القلم والشخبطة بأصابع اليد", text: "يمسك القلم بقبضة مناسبة ويخطط على الصفحة." },
+                        { id: "Z2", title: "إسقاط الأشكال في صندوق الفتحات", text: "يطابق الشكل الهندسي مع الفتحة المناسبة بالصندوق." },
+                        { id: "Z3", title: "تركيب بازل القطعة الواحدة ذات المقبض", text: "يضع القطعة الفردية في تجويفها الصحيح." },
+                        { id: "Z4", title: "تركيب بازل متعدد القطع داخل إطار", text: "يركب قطعاً متجاورة لتكوين صورة داخل الإطار." },
+                        { id: "Z5", title: "وضع المكعبات بدقة فوق نموذج مرسوم", text: "يطابق مواقع المكعبات فوق بطاقة التصميم." },
+                        { id: "Z6", title: "نقل الأدوات والأشياء بين اليدين", text: "يمرر الغرض بسلاسة من يده اليمنى لليسرى." },
+                        { id: "Z7", title: "غرس الأوتاد والأعمدة في الثقوب", text: "يثبت الأوتاد في لوحة الأوتاد الخشبية أو البلاستيكية." },
+                        { id: "Z8", title: "تقليب صفحات القصة صفحة بصفحة", text: "يقلب أوراق الكتاب ورقة واحدة دون تمزيقها." },
+                        { id: "Z9", title: "تثبيت مشابك الغسيل بالضغط", text: "يفتح المشبك بضغط أصابعه ويثبته على الحبل أو الحافة." },
+                        { id: "Z10", title: "التلوين الدقيق داخل الإطار", text: "يتحكم في عضلات يده للتلوين داخل المساحات." },
+                        { id: "Z11", title: "فتح سحابات الأكياس والحقائب الصغيرة", text: "يسحب سحاب المحفظة أو مقلمة الألوان." },
+                        { id: "Z12", title: "قص الورق بالمقص (قصة واحدة)", text: "يمسك المقص بصورة صحيحة ويقص طرف الورقة." },
+                        { id: "Z13", title: "بناء برج مرتفع من المكعبات", text: "يرص 8 مكعبات فأكثر فوق بعضها دون سقوط البرج." },
+                        { id: "Z14", title: "لضم الخرز في الخيط", text: "يدخل طرف الخيط في ثقب الخرزة ويسحبها." },
+                        { id: "Z15", title: "فتح أغطية العلب والبرطمانات", text: "يدير ويفك الغطاء اللولبي أو الضاغط." },
+                        { id: "Z16", title: "قص خطوط كاملة بالمقص", text: "يقص الورقة لقطعتين بالسير على خط مرسوم." },
+                        { id: "Z17", title: "تتبع المسارات والخطوط بالسبابة", text: "يسير بسبابته بدقة فوق المسارات الضيقة." },
+                        { id: "Z18", title: "عصر وضغط الزجاجة البلاستيكية", text: "يضغط على علبة السائل أو المعجون لإخراج محتواها." },
+                        { id: "Z19", title: "نزع وإزالة أغلفة الحلوى والأطعمة", text: "يفك الغلاف البلاستيكي أو الورقي عن البسكويت." },
+                        { id: "Z20", title: "رسم أشكال هندسية بسيطة (مربع، دائرة)", text: "ينقل الخطوط المتقاطعة والأشكال بدقة مقبولة." },
+                        { id: "Z21", title: "لصق الأشكال الورقية في مكانها", text: "يضع الصمغ ويثبت القصاصة داخل الإطار المخصص." },
+                        { id: "Z22", title: "لصق التفاصيل الدقيقة للأشكال", text: "يثبت تفاصيل دقيقة (مثل العيون والأنف) في مكانها." },
+                        { id: "Z23", title: "إدخال الحلقات في العمود بتسلسل الأحجام", text: "يرتب الحلقات في العمود من الأكبر للأصغر." },
+                        { id: "Z24", title: "إغلاق أغطية العلب بإحكام", text: "يضغط الغطاء أو يديره حتى يغلق العلبة تماماً." },
+                        { id: "Z25", title: "التقاط الأشياء الدقيقة بالقبضة الملقاطية", text: "يلتقط حبة خرز أو خيطاً بين الإبهام والسبابة." },
+                        { id: "Z26", title: "طي الورقة لنصفين متطابقين", text: "يطوي الورقة بحد متساوٍ بالضغط عليها بأصابعه." },
+                        { id: "Z27", title: "قص الأشكال الهندسية بالمقص", text: "يقص دائرة أو مربعاً بالدوران مع حدود الشكل." },
+                        { id: "Z28", title: "رسم الأنماط بدقة متناهية والتفافات", text: "يرسم أشكالاً مركبة مع التحكم الكامل في القياس والاتجاه." }
+                    ]
+                }
+            ]
+        };
+
+        let currentChildName = "";
+        let currentEvaluatorName = "";
+        let selectedDimensions = [];
+
+        // التنقل بين التبويبات بنمط جيليام
+        function switchTab(tabIndex) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const navBtns = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach((tab, idx) => {
+                tab.classList.toggle('hidden', idx !== tabIndex);
+            });
+
+            navBtns.forEach((btn, idx) => {
+                if (idx === tabIndex) {
+                    btn.classList.add('border-teal-600', 'text-teal-700', 'bg-white');
+                    btn.classList.remove('border-transparent', 'text-slate-500');
+                    btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                } else {
+                    btn.classList.remove('border-teal-600', 'text-teal-700', 'bg-white');
+                    btn.classList.add('border-transparent', 'text-slate-500');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // الانتقال للتقييم والتحقق من المدخلات
+        function goToStep2() {
+            currentChildName = document.getElementById("childName").value.trim();
+            currentEvaluatorName = document.getElementById("evaluatorName").value.trim();
+
+            if (!currentChildName) {
+                alert("يرجى كتابة اسم الطفل للبدء في التقييم.");
+                return;
+            }
+
+            const checkboxes = document.querySelectorAll('input[name="dimension"]:checked');
+            selectedDimensions = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selectedDimensions.length === 0) {
+                alert("يرجى اختيار بعد واحد على الأقل للمتابعة.");
+                return;
+            }
+
+            renderAssessmentItems();
+            switchTab(1);
+        }
+
+        // بناء بطاقات التقييم بتنسيق جيليام الأنيق
+        function renderAssessmentItems() {
+            const container = document.getElementById("domainsContainer");
+            container.innerHTML = "";
+
+            selectedDimensions.forEach(dimKey => {
+                const domains = abllsData[dimKey] || [];
+                domains.forEach(domain => {
+                    if (domain.items && domain.items.length > 0) {
+                        const domainCard = document.createElement("div");
+                        domainCard.className = "bg-white p-4 md:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4";
+                        
+                        let itemsHTML = `
+                            <div class="border-b border-slate-200 pb-3 flex items-center justify-between">
+                                <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center">
+                                    <span class="w-2.5 h-5 bg-teal-600 rounded-full ml-2"></span>
+                                    المجال (${domain.code}): ${domain.name}
+                                </h3>
+                                <span class="bg-teal-50 text-teal-800 border border-teal-200 text-xs font-bold px-2.5 py-1 rounded-lg">
+                                    ${domain.items.length} بنود
+                                </span>
+                            </div>
+                            <div class="space-y-2.5">
+                        `;
+                        
+                        domain.items.forEach(item => {
+                            itemsHTML += `
+                                <label class="cursor-pointer bg-slate-50/70 hover:bg-teal-50/40 p-3 md:p-3.5 rounded-xl border border-slate-200/80 hover:border-teal-300 transition-all flex items-start space-x-3 space-x-reverse">
+                                    <input type="checkbox" onchange="updateMasteredBadge()" data-domain="${domain.name}" data-code="${domain.code}" data-item-id="${item.id}" data-item-title="${item.title}" data-item-text="${item.text}" class="mt-1 w-4 h-4 accent-teal-600 rounded flex-shrink-0">
+                                    <div class="text-xs md:text-sm leading-relaxed">
+                                        <span class="bg-teal-100 text-teal-900 font-extrabold px-1.5 py-0.5 rounded text-[11px] ml-1.5">[${item.id}]</span>
+                                        <strong class="text-slate-800">${item.title}:</strong>
+                                        <span class="text-slate-600 block mt-0.5">${item.text}</span>
+                                    </div>
+                                </label>
+                            `;
+                        });
+
+                        itemsHTML += `</div>`;
+                        domainCard.innerHTML = itemsHTML;
+                        container.appendChild(domainCard);
+                    }
+                });
+            });
+            updateMasteredBadge();
+        }
+
+        // تحديث عداد البنود المتقنة فورياً
+        function updateMasteredBadge() {
+            const checkedCount = document.querySelectorAll('#domainsContainer input[type="checkbox"]:checked').length;
+            const badge = document.getElementById("masteredCount");
+            if (badge) badge.innerText = checkedCount;
+        }
+
+        // استخراج التقرير وجداول الخطة الفردية
+        function generateReport() {
+            const allInputs = document.querySelectorAll('#domainsContainer input[type="checkbox"]');
+            const unmasteredByDomain = {};
+            let masteredTotal = 0;
+            let unmasteredTotal = 0;
+
+            allInputs.forEach(input => {
+                if (!input.checked) {
+                    unmasteredTotal++;
+                    const domainKey = `المجال (${input.dataset.code}): ${input.dataset.domain}`;
+                    if (!unmasteredByDomain[domainKey]) {
+                        unmasteredByDomain[domainKey] = [];
+                    }
+                    unmasteredByDomain[domainKey].push({
+                        id: input.dataset.itemId,
+                        title: input.dataset.itemTitle,
+                        text: input.dataset.itemText
+                    });
+                } else {
+                    masteredTotal++;
+                }
+            });
+
+            // ملء بطاقة المعلومات العلوية
+            document.getElementById("reportHeader").innerHTML = `
+                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                    <span class="block text-slate-400 text-[10px] md:text-xs">اسم المفحوص:</span>
+                    <span class="font-bold text-slate-800 truncate block">${currentChildName}</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                    <span class="block text-slate-400 text-[10px] md:text-xs">القائم بالتقييم:</span>
+                    <span class="font-bold text-slate-800 truncate block">${currentEvaluatorName || "غير محدد"}</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                    <span class="block text-slate-400 text-[10px] md:text-xs">إحصائية التقييم:</span>
+                    <span class="font-bold text-teal-800 truncate block">متقن: ${masteredTotal} | مستهدف: ${unmasteredTotal}</span>
+                </div>
+            `;
+
+            const tablesContainer = document.getElementById("reportTablesContainer");
+            tablesContainer.innerHTML = "";
+
+            const domainKeys = Object.keys(unmasteredByDomain);
+
+            if (domainKeys.length === 0) {
+                tablesContainer.innerHTML = `
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center text-emerald-800 font-bold text-base md:text-lg">
+                        رائع جداً! أظهر الطفل إتقاناً تاماً لجميع المهارات المفحوصة ضمن الأبعاد المحددة.
+                    </div>
+                `;
+            } else {
+                domainKeys.forEach(domainTitle => {
+                    const domainGroup = document.createElement("div");
+                    domainGroup.className = "space-y-3";
+
+                    let tableHTML = `
+                        <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                            <div class="bg-slate-100 text-slate-800 font-bold px-4 py-2.5 border-b border-slate-200 text-xs md:text-sm flex items-center">
+                                <span class="w-2 h-4 bg-teal-600 rounded-full ml-2"></span>
+                                ${domainTitle} (${unmasteredByDomain[domainTitle].length} مهارات مستهدفة)
+                            </div>
+                            <table class="w-full text-right border-collapse text-xs md:text-sm min-w-[600px] bg-white">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
+                                    <tr>
+                                        <th class="p-3 text-center w-[12%]">رمز البند</th>
+                                        <th class="p-3 w-[28%]">اسم المهارة</th>
+                                        <th class="p-3 w-[45%]">الهدف والوصف التفصيلي</th>
+                                        <th class="p-3 text-center w-[15%]">المتابعة الميدانية</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                    `;
+
+                    unmasteredByDomain[domainTitle].forEach(item => {
+                        tableHTML += `
+                            <tr class="hover:bg-slate-50 transition-all">
+                                <td class="p-3 text-center font-bold text-teal-800 bg-teal-50/30">${item.id}</td>
+                                <td class="p-3 font-semibold text-slate-800">${item.title}</td>
+                                <td class="p-3 text-slate-600 leading-relaxed">${item.text}</td>
+                                <td class="p-3 text-center">
+                                    <label class="inline-flex items-center gap-1.5 cursor-pointer bg-slate-100 hover:bg-teal-50 px-2.5 py-1 rounded-lg border border-slate-200 transition-all">
+                                        <input type="checkbox" class="accent-teal-600 w-3.5 h-3.5 rounded">
+                                        <span class="text-[11px] font-bold text-slate-600">أُنجز</span>
+                                    </label>
+                                </td>
+                            </tr>
+                        `;
+                    });
+
+                    tableHTML += `
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+
+                    domainGroup.innerHTML = tableHTML;
+                    tablesContainer.appendChild(domainGroup);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
