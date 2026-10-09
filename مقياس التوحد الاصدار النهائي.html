@@ -26,9 +26,9 @@
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- شريط الهيدر العلوي بنمط مقياس جيليام -->
+    <!-- شريط الهيدر مع زر الرجوع للرئيسية -->
     <header class="bg-gradient-to-r from-teal-700 to-cyan-800 text-white shadow-md py-4 md:py-6 px-4 no-print">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-right gap-3">
             <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-3 md:space-x-reverse">
@@ -42,8 +42,18 @@
                     <p class="text-cyan-200 text-xs md:text-sm">استمارة التقدير التشخيصي والتصحيح الآلي للبيئة المدرسية والأسرية</p>
                 </div>
             </div>
-            <div class="text-xs bg-cyan-900/60 px-3 py-1.5 rounded-lg border border-cyan-500/30 text-cyan-100">
-                إعداد: محمود السيد الديب (2015) | التوحد أمانة بعنقي
+            
+            <div class="flex items-center gap-3">
+                <div class="text-xs bg-cyan-900/60 px-3 py-1.5 rounded-lg border border-cyan-500/30 text-cyan-100 hidden sm:block">
+                    إعداد: محمود السيد الديب
+                </div>
+                <!-- زر الرجوع للرئيسية -->
+                <a href="home.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span>الرئيسية</span>
+                </a>
             </div>
         </div>
     </header>
@@ -51,7 +61,7 @@
     <main class="flex-grow max-w-6xl w-full mx-auto p-2 md:p-6">
         <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden print-shadow">
             
-            <!-- شريط التبويبات المتجاوب مع التمرير الأفقي للهواتف -->
+            <!-- شريط التبويبات المتجاوب -->
             <div class="flex overflow-x-auto border-b border-slate-200 bg-slate-50/50 no-print scrollbar-thin" id="tab-nav">
                 <button onclick="switchTab(0)" class="tab-btn flex-shrink-0 min-w-[140px] py-3.5 px-3 text-center font-bold text-xs md:text-sm text-teal-700 border-b-2 border-teal-600 bg-white transition-all flex items-center justify-center gap-1">
                     <span>بيانات الحالة</span>
@@ -72,7 +82,7 @@
 
             <form id="adhdForm" onsubmit="event.preventDefault();">
                 
-                <!-- القسم 0: بيانات الحالة واختيار النموذج -->
+                <!-- القسم 0: بيانات الحالة -->
                 <div class="tab-content p-4 md:p-8 space-y-6" id="section-0">
                     <div class="border-b border-slate-200 pb-4">
                         <h2 class="text-lg md:text-xl font-bold text-slate-800 flex items-center">
@@ -82,7 +92,6 @@
                         <p class="text-slate-500 text-xs md:text-sm mt-1">حدد نوع الاستبيان (الأخصائي / الأسرة) وأدخل بيانات الطفل الأساسية.</p>
                     </div>
 
-                    <!-- اختيار نوع الاستبيان -->
                     <div class="bg-gradient-to-br from-teal-50/80 to-cyan-50/80 border border-teal-200 rounded-2xl p-4 md:p-6 space-y-4">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <div>
@@ -102,7 +111,6 @@
                             </div>
                         </div>
 
-                        <!-- تعليمات التصحيح -->
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 text-xs text-center font-bold">
                             <div class="bg-white p-2.5 rounded-xl border border-teal-100 text-slate-700">نادراً = 0 درجة</div>
                             <div class="bg-white p-2.5 rounded-xl border border-teal-100 text-slate-700">قليلاً = 1 درجة</div>
@@ -111,7 +119,6 @@
                         </div>
                     </div>
 
-                    <!-- حقول البيانات -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                         <div>
                             <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-2">اسم الطفل / المفحوص:</label>
@@ -221,7 +228,7 @@
                     </div>
                 </div>
 
-                <!-- القسم 4: النتائج والتقرير التشخيصي الاسترشادي -->
+                <!-- القسم 4: النتائج والتقرير -->
                 <div class="tab-content p-4 md:p-8 space-y-8 hidden" id="section-4">
                     <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 no-print">
                         <div>
@@ -237,7 +244,6 @@
                         </button>
                     </div>
 
-                    <!-- بطاقة ملخص بيانات الحالة -->
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 md:p-6 space-y-4">
                         <div class="text-center pb-3 border-b border-slate-200">
                             <h3 class="text-base md:text-lg font-bold text-teal-800">تقرير قياس مؤشرات فرط الحركة وتشتت الانتباه والاندفاعية</h3>
@@ -263,7 +269,6 @@
                         </div>
                     </div>
 
-                    <!-- جدول الدرجات التفصيلية -->
                     <div class="space-y-3">
                         <h4 class="font-bold text-slate-800 text-xs md:text-sm flex items-center">
                             <span class="w-2 h-4 bg-teal-600 rounded-full ml-2"></span>
@@ -282,13 +287,11 @@
                                     </tr>
                                 </thead>
                                 <tbody id="report-table-body" class="divide-y divide-slate-200 bg-white">
-                                    <!-- يتم البناء بواسطة JS -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- صندوق التفسير التشخيصي والتوصيات بنمط جيليام -->
                     <div class="bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-200 rounded-2xl p-4 md:p-6 space-y-4">
                         <h4 class="font-bold text-teal-900 text-sm md:text-base flex items-center border-b border-teal-200 pb-3">
                             <span class="w-2.5 h-5 bg-teal-600 rounded-full ml-2"></span>
@@ -330,12 +333,11 @@
 
         <!-- تذييل الصفحة -->
         <footer class="mt-6 text-center py-4 border-t border-slate-200 text-slate-500 text-xs md:text-sm">
-            مقياس فرط الحركة وتشتت الانتباه | إعداد: محمود السيد الديب (2015)
+            تطوير الباش_أخصائي©
         </footer>
     </main>
 
     <script>
-        // بنود المقياسين كاملة كما وردت بالملف الأصلي
         const adhdData = {
             specialist: {
                 title: "استبيان الأخصائي / المعلم",
@@ -503,14 +505,12 @@
 
         let currentScaleSource = 'specialist';
 
-        // تبديل نوع الاستبيان
         function switchScaleSource(type) {
             currentScaleSource = type;
             renderDimensions();
             updateRawScores();
         }
 
-        // بناء البنود ديناميكياً بنفس ستايل مقياس جيليام
         function renderDimensions() {
             const currentData = adhdData[currentScaleSource];
             currentData.dimensions.forEach((dim, dIdx) => {
@@ -546,7 +546,6 @@
             });
         }
 
-        // تحديث الدرجات الخام فورياً
         function updateRawScores() {
             const currentData = adhdData[currentScaleSource];
             currentData.dimensions.forEach((dim, dIdx) => {
@@ -560,7 +559,6 @@
             });
         }
 
-        // التنقل بين التبويبات
         function switchTab(tabIndex) {
             const tabs = document.querySelectorAll('.tab-content');
             const navBtns = document.querySelectorAll('.tab-btn');
@@ -582,7 +580,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // إنشاء التقرير النهائي
         function generateReport() {
             const childName = document.getElementById('childName').value || "غير مسجل";
             const childAge = document.getElementById('childAge').value || "غير مسجل";
@@ -664,7 +661,6 @@
             document.getElementById('res-guideline').innerText = guideText;
         }
 
-        // التهيئة عند التحميل
         window.onload = function() {
             document.getElementById('evalDate').value = new Date().toISOString().slice(0, 10);
             renderDimensions();

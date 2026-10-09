@@ -3,27 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المنصة الشاملة للتشخيص والتأهيل التخاطبي</title>
+    <title>تسجيل الدخول - المنصة الشاملة للتشخيص والتأهيل</title>
 
-    <!-- إعدادات بطاقة مشاركة الرابط (Open Graph / WhatsApp / Facebook / Telegram) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="المنصة الشاملة للتشخيص والتأهيل التخاطبي" />
-    <meta property="og:description" content="بوابة المقاييس النفسية، تقييم اضطرابات النمائية، وتدريبات النطق والتخاطب." />
-    <meta property="og:image" content="https://raw.githubusercontent.com/themperor0-creator/PsychologicalAssessmentPlatform/main/link.jpg" />
-    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/themperor0-creator/PsychologicalAssessmentPlatform/main/link.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="شعار المنصة الشاملة للتشخيص والتأهيل التخاطبي" />
-
-    <!-- إعدادات منصة X (تويتر سابقاً) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="المنصة الشاملة للتشخيص والتأهيل التخاطبي" />
-    <meta name="twitter:description" content="بوابة المقاييس النفسية، تقييم اضطرابات النمائية، وتدريبات النطق والتخاطب." />
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/themperor0-creator/PsychologicalAssessmentPlatform/main/link.jpg" />
-
-    <!-- أيقونة التبويب في المتصفح (Favicon) -->
-    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/themperor0-creator/PsychologicalAssessmentPlatform/main/link.jpg" />
+    <!-- التحقق إذا كان مسجلاً بالفعل، يتم توجيهه إلى home.html فوراً -->
+    <script>
+        if (localStorage.getItem("currentUser")) {
+            window.location.replace("home.html");
+        }
+    </script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,168 +19,142 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #f8fafc;
+            background: radial-gradient(circle at top right, #f0fdfa, #f8fafc);
         }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- شريط الهيدر العلوي بنمط مقياس جيليام -->
-    <header class="bg-gradient-to-r from-teal-700 to-cyan-800 text-white shadow-md py-6 md:py-8 px-4">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-right gap-4">
-            <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4 md:space-x-reverse">
-                <div class="bg-white/10 p-3 rounded-2xl border border-white/20 shadow-inner">
-                    <svg class="w-9 h-9 text-cyan-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">المنصة الشاملة للتشخيص والتأهيل</h1>
-                    <p class="text-cyan-200 text-xs md:text-sm mt-1">بوابة المقاييس النفسية، تقييم اضطرابات النمائية، وتدريبات النطق والتخاطب</p>
-                </div>
-            </div>
-            <div class="text-xs bg-cyan-900/60 px-4 py-2 rounded-xl border border-cyan-500/30 text-cyan-100 font-semibold shadow-sm">
-                الواجهة الرئيسية للنظام الرقمي المعتمد
-            </div>
-        </div>
+    <!-- شريط علوي مبسط متناسق -->
+    <header class="bg-gradient-to-r from-teal-700 to-cyan-800 text-white shadow-md py-4 px-6 text-center">
+        <h1 class="text-xl md:text-2xl font-black tracking-tight">المنصة الشاملة للتشخيص والتأهيل</h1>
+        <p class="text-cyan-200 text-xs mt-1">بوابة المقاييس النفسية، تقييم اضطرابات النمائية، وتدريبات النطق والتخاطب</p>
     </header>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:p-8">
-        
-        <!-- بطاقة الترحيب والتعريف -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 mb-8 text-center md:text-right">
-            <h2 class="text-lg md:text-xl font-bold text-slate-800 flex items-center justify-center md:justify-start">
-                <span class="w-2.5 h-6 bg-teal-600 rounded-full ml-2.5"></span>
-                بوابة الأدوات والاختبارات التفاعلية
-            </h2>
-            <p class="text-slate-500 text-xs md:text-sm mt-2 leading-relaxed">
-                اختر المقياس أو الأداة التدريبية المناسبة لبدء عملية التقييم الإلكتروني المباشر واستخراج التقارير التشخيصية وحساب الدرجات بدقة.
-            </p>
-        </div>
+    <!-- بطاقة تسجيل الدخول -->
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-xl border border-slate-200/80 p-8 md:p-10 relative overflow-hidden">
+            <div class="absolute top-0 right-0 left-0 h-2 bg-gradient-to-r from-teal-600 via-cyan-600 to-teal-500"></div>
 
-        <!-- شبكة الأقسام الأربعة -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            <!-- 1. قسم مقياس التوحد -->
-            <a href="مقياس التوحد الاصدار النهائي.html" class="group bg-white rounded-2xl shadow-md border border-slate-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between hover:-translate-y-1.5">
-                <div class="space-y-4">
-                    <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 text-teal-700 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-all shadow-sm">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-extrabold text-teal-700 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-lg">الإصدار المعتمد</span>
-                        <h3 class="text-lg font-bold text-slate-800 mt-2.5 group-hover:text-teal-700 transition-colors">مقياس التوحد</h3>
-                        <p class="text-slate-500 text-xs mt-2 leading-relaxed">
-                            استمارة تقييم شاملة لتشخيص مؤشرات اضطراب التوحد، مع حساب الدرجات وتحديد مستوى الشدة تلقائياً.
-                        </p>
-                    </div>
-                </div>
-                <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between text-teal-700 font-bold text-xs md:text-sm">
-                    <span>فتح المقياس</span>
-                    <svg class="w-4 h-4 transform group-hover:-translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 mx-auto rounded-3xl bg-teal-50 border border-teal-100 text-teal-700 flex items-center justify-center shadow-inner mb-4">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
                 </div>
-            </a>
-
-            <!-- 2. قسم مقياس جيليام -->
-            <a href="مقياس جيليام.html" class="group bg-white rounded-2xl shadow-md border border-slate-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between hover:-translate-y-1.5">
-                <div class="space-y-4">
-                    <div class="w-14 h-14 rounded-2xl bg-cyan-50 border border-cyan-100 text-cyan-800 flex items-center justify-center group-hover:bg-cyan-700 group-hover:text-white transition-all shadow-sm">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-extrabold text-cyan-800 bg-cyan-50 border border-cyan-200 px-2.5 py-1 rounded-lg">GARS-3 الإصدار الثالث</span>
-                        <h3 class="text-lg font-bold text-slate-800 mt-2.5 group-hover:text-teal-700 transition-colors">مقياس جيليام</h3>
-                        <p class="text-slate-500 text-xs mt-2 leading-relaxed">
-                            مقياس جيليام لتقدير اضطراب طيف التوحد (الإصدار الثالث) مع حساب المعامل المركب والرتب المئينية والتقرير الإكلينيكي.
-                        </p>
-                    </div>
-                </div>
-                <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between text-teal-700 font-bold text-xs md:text-sm">
-                    <span>فتح المقياس</span>
-                    <svg class="w-4 h-4 transform group-hover:-translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </div>
-            </a>
-
-            <!-- 3. قسم التدريب على اللدغات والخنف -->
-            <a href="التدريب على اللدغات والخنف.html" class="group bg-white rounded-2xl shadow-md border border-slate-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between hover:-translate-y-1.5">
-                <div class="space-y-4">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">جلسات التخاطب</span>
-                        <h3 class="text-lg font-bold text-slate-800 mt-2.5 group-hover:text-teal-700 transition-colors">التدريب على اللدغات والخنف</h3>
-                        <p class="text-slate-500 text-xs mt-2 leading-relaxed">
-                            قوائم الكلمات المصنفة لمخارج الحروف (بداية، وسط، نهاية الكلمة والجمل التلقائية) لإعادة تأهيل النطق وتصحيح مخارج الأصوات.
-                        </p>
-                    </div>
-                </div>
-                <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between text-teal-700 font-bold text-xs md:text-sm">
-                    <span>فتح التدريبات</span>
-                    <svg class="w-4 h-4 transform group-hover:-translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </div>
-            </a>
-
-            <!-- 4. قسم برنامج الايبلز (ABLLS-R) -->
-            <a href="الايبلز.html" class="group bg-white rounded-2xl shadow-md border border-slate-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between hover:-translate-y-1.5">
-                <div class="space-y-4">
-                    <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 text-teal-800 flex items-center justify-center group-hover:bg-teal-700 group-hover:text-white transition-all shadow-sm">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-extrabold text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-lg">ABLLS-R الشامل</span>
-                        <h3 class="text-lg font-bold text-slate-800 mt-2.5 group-hover:text-teal-700 transition-colors">برنامج الايبلز</h3>
-                        <p class="text-slate-500 text-xs mt-2 leading-relaxed">
-                            تقييم المهارات اللغوية والنمائية الأساسية للتعلم واستخراج خطة المهارات والأهداف غير المتقنة آلياً.
-                        </p>
-                    </div>
-                </div>
-                <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between text-teal-700 font-bold text-xs md:text-sm">
-                    <span>فتح البرنامج</span>
-                    <svg class="w-4 h-4 transform group-hover:-translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </div>
-            </a>
-
-        </div>
-
-        <!-- صندوق إرشادي سريع -->
-        <div class="mt-8 bg-gradient-to-br from-teal-50/70 to-cyan-50/70 border border-teal-200 rounded-2xl p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md shadow-teal-600/20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <div class="text-xs md:text-sm text-slate-700 leading-relaxed">
-                    <strong>تنبيه فني:</strong> تأكد من وجود ملف <code class="bg-white px-2 py-0.5 rounded border border-teal-200 text-teal-800 font-bold">الايبلز.html</code> مع بقية الملفات في نفس المجلد لتعمل الروابط المباشرة بسلاسة[span_1](start_span)[span_1](end_span).
-                </div>
+                <h2 class="text-2xl font-black text-slate-800">تسجيل الدخول للمنظومة</h2>
+                <p class="text-slate-500 text-xs mt-2">يرجى إدخال اسم المستخدم وكلمة المرور المعتمدة للمتابعة</p>
             </div>
-        </div>
 
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-2">اسم المستخدم</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </span>
+                        <input type="text" id="username" required
+                            class="w-full pr-11 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all"
+                            placeholder="أدخل اسم المستخدم">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-2">كلمة المرور</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </span>
+                        <input type="password" id="password" required
+                            class="w-full pr-11 pl-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all"
+                            placeholder="••••••••">
+                    </div>
+                </div>
+
+                <div id="statusBox" class="hidden text-xs rounded-xl p-3 text-center font-bold"></div>
+
+                <button type="submit" id="submitBtn"
+                    class="w-full py-3.5 px-4 bg-gradient-to-r from-teal-700 to-cyan-800 hover:from-teal-800 hover:to-cyan-900 text-white font-bold rounded-xl shadow-lg shadow-teal-700/20 hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 space-x-reverse">
+                    <span>تسجيل الدخول</span>
+                </button>
+            </form>
+
+            <!-- فاصل تنظيمي -->
+            <div class="relative my-6 text-center">
+                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+                <div class="relative flex justify-center text-xs"><span class="bg-white px-3 text-slate-400 font-semibold">أو</span></div>
+            </div>
+
+            <!-- خيار الحصول على اشتراك عبر واتساب -->
+            <a href="https://wa.me/201212436658?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A8%D8%A7%D9%84%D9%85%D9%86%D8%B5%D8%A9"
+                target="_blank"
+                class="w-full py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-sm text-sm">
+                <!-- أيقونة واتساب SVG -->
+                <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.237-.038.37.283.144.346.491 1.2.534 1.287s.072.188.014.304c-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.181-.077.355.101.173.452.746.97 1.208.669.596 1.233.78 1.406.867.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.394-10.416c-5.523 0-10 4.477-10 10 0 1.764.459 3.423 1.264 4.871l-1.298 4.743 4.863-1.275c1.401.766 3.003 1.206 4.707 1.206 5.523 0 10-4.477 10-10 0-5.523-4.477-10-10-10z"/>
+                </svg>
+                <span>الحصول على اشتراك</span>
+            </a>
+        </div>
     </main>
 
-    <!-- الفوتر -->
-    <footer class="mt-8 text-center py-5 border-t border-slate-200 text-slate-500 text-xs md:text-sm bg-white">
-        المنظومة الرقمية للتربية الخاصة والتأهيل التخاطبي
+    <!-- الفوتر مع حقوق التطوير -->
+    <footer class="py-4 text-center border-t border-slate-200 text-xs text-slate-500 bg-white">
+        تطوير الباش_أخصائي©
     </footer>
 
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxGhZDoNtGJSKLDnoA1KfPY7-QG9fQjvaqDWpOLpLedLi9hnb5ZUNf6l-61r-oGoNy0SA/exec";
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById("username").value.trim();
+            const p = document.getElementById("password").value;
+            const statusBox = document.getElementById("statusBox");
+            const btn = document.getElementById("submitBtn");
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-pulse">جاري التحقق من الحساب...</span>`;
+            statusBox.className = "text-xs rounded-xl p-3 text-center font-bold bg-teal-50 text-teal-800 border border-teal-200 block";
+            statusBox.innerText = "جاري الاتصال بقاعدة البيانات وقفل الحساب...";
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: JSON.stringify({ action: "login", username: u, password: p })
+                });
+
+                const data = await response.json();
+
+                if (data.status === "success") {
+                    statusBox.className = "text-xs rounded-xl p-3 text-center font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 block";
+                    statusBox.innerText = "تم تسجيل الدخول بنجاح! جاري تحويلك...";
+                    
+                    // حفظ المستخدم بشكل دائم في المتصفح
+                    localStorage.setItem("currentUser", u);
+                    
+                    setTimeout(() => {
+                        window.location.replace("home.html");
+                    }, 700);
+                } else {
+                    statusBox.className = "text-xs rounded-xl p-3 text-center font-bold bg-rose-50 text-rose-800 border border-rose-200 block";
+                    statusBox.innerText = data.message || "بيانات الدخول غير صحيحة.";
+                    btn.disabled = false;
+                    btn.innerHTML = "<span>تسجيل الدخول</span>";
+                }
+            } catch (err) {
+                statusBox.className = "text-xs rounded-xl p-3 text-center font-bold bg-rose-50 text-rose-800 border border-rose-200 block";
+                statusBox.innerText = "تعذر الاتصال بالخادم. يرجى التحقق من اتصال الإنترنت.";
+                btn.disabled = false;
+                btn.innerHTML = "<span>تسجيل الدخول</span>";
+            }
+        }
+    </script>
 </body>
 </html>
 

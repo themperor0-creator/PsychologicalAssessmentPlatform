@@ -26,8 +26,9 @@
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
 
+    <!-- شريط الهيدر مع زر الرجوع للرئيسية -->
     <header class="bg-gradient-to-r from-teal-700 to-cyan-800 text-white shadow-md py-4 md:py-6 px-4 no-print">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-right gap-3">
             <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-3 md:space-x-reverse">
@@ -39,8 +40,18 @@
                     <p class="text-cyan-200 text-xs md:text-sm">الإصدار الثالث - كراسة الاستجابة والتصحيح الآلي المعتمد</p>
                 </div>
             </div>
-            <div class="text-xs bg-cyan-900/60 px-3 py-1.5 rounded-lg border border-cyan-500/30 text-cyan-100">
-                تأليف: جيمس جيليام | تعريب: سامح محمد عرفة
+            
+            <div class="flex items-center gap-3">
+                <div class="text-xs bg-cyan-900/60 px-3 py-1.5 rounded-lg border border-cyan-500/30 text-cyan-100 hidden sm:block">
+                    تعريب: سامح محمد عرفة
+                </div>
+                <!-- زر الرجوع للرئيسية -->
+                <a href="home.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span>الرئيسية</span>
+                </a>
             </div>
         </div>
     </header>
@@ -48,7 +59,7 @@
     <main class="flex-grow max-w-6xl w-full mx-auto p-2 md:p-6">
         <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden print-shadow">
             
-            <!-- Tab Navigation Header (Scrollable on Mobile) -->
+            <!-- Tab Navigation Header -->
             <div class="flex overflow-x-auto border-b border-slate-200 bg-slate-50/50 no-print scrollbar-thin" id="tab-nav">
                 <button onclick="switchTab(0)" class="tab-btn flex-shrink-0 min-w-[130px] py-3 px-3 text-center font-bold text-xs md:text-sm text-teal-700 border-b-2 border-teal-600 bg-white transition-all flex items-center justify-center space-x-1 space-x-reverse">
                     <span>البيانات الأساسية</span>
@@ -88,7 +99,6 @@
                         <p class="text-slate-500 text-xs md:text-sm mt-1">أدخل معلومات المفحوص والفاحص بدقة لتضمينها في التقرير النهائي.</p>
                     </div>
 
-                    <!-- دليل خطوات وإرشادات التطبيق -->
                     <div class="bg-gradient-to-br from-teal-50/80 to-cyan-50/80 border border-teal-200 rounded-2xl p-4 md:p-6 space-y-4">
                         <h3 class="font-bold text-teal-900 text-sm md:text-base flex items-center">
                             <svg class="w-5 h-5 text-teal-700 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -126,7 +136,6 @@
                             <input type="text" id="childName" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:bg-white transition-all text-sm" placeholder="أدخل اسم الطفل الثلاثي">
                         </div>
                         
-                        <!-- تاريخ الميلاد (يوم، شهر، سنة) -->
                         <div>
                             <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-2">تاريخ الميلاد (يوم / شهر / سنة):</label>
                             <div class="grid grid-cols-3 gap-2">
@@ -154,13 +163,11 @@
                             </div>
                         </div>
 
-                        <!-- تاريخ التطبيق -->
                         <div>
                             <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-2">تاريخ التطبيق:</label>
                             <input type="date" id="testDate" onchange="calculateChronologicalAge()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:bg-white transition-all text-sm">
                         </div>
 
-                        <!-- العمر الزمني المحسوب تلقائياً -->
                         <div class="md:col-span-3 bg-teal-50 border border-teal-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                             <div class="flex items-center space-x-3 space-x-reverse">
                                 <svg class="w-6 h-6 text-teal-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -169,7 +176,6 @@
                                     <span id="displayAgeText" class="text-base md:text-lg font-bold text-teal-900">أدخل تاريخ الميلاد وتاريخ التطبيق لحساب العمر</span>
                                 </div>
                             </div>
-                            <!-- مخفيات لتخزين القيم الرقمية للاستخدام في النظام -->
                             <input type="hidden" id="childAgeYears">
                             <input type="hidden" id="childAgeMonths">
                         </div>
@@ -207,7 +213,6 @@
                     </div>
                 </div>
 
-                <!-- SECTIONS 1 TO 6 CONTAINER GENERATOR HELPER -->
                 <!-- SECTION 1: RB -->
                 <div class="tab-content p-4 md:p-8 space-y-6 hidden" id="section-1">
                     <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -353,7 +358,6 @@
                         </button>
                     </div>
 
-                    <!-- Printable Report Card Header -->
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 md:p-6 space-y-4">
                         <div class="text-center pb-4 border-b border-slate-200">
                             <h3 class="text-base md:text-lg font-bold text-teal-800">تقرير مقياس جيليام لتقدير اضطراب طيف التوحد - الإصدار الثالث (GARS-3)</h3>
@@ -379,7 +383,6 @@
                         </div>
                     </div>
 
-                    <!-- Table of Subscales (القسم الثاني) - Responsive Overflow -->
                     <div class="space-y-3">
                         <h4 class="font-bold text-slate-800 text-xs md:text-sm flex items-center">
                             <span class="w-2 h-4 bg-teal-600 rounded-full ml-2"></span>
@@ -398,13 +401,11 @@
                                     </tr>
                                 </thead>
                                 <tbody id="subscales-results-table" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Populated dynamically via JS -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Table of Performance Composites (القسم الثالث) - Responsive Overflow -->
                     <div class="space-y-3">
                         <h4 class="font-bold text-slate-800 text-xs md:text-sm flex items-center">
                             <span class="w-2 h-4 bg-teal-600 rounded-full ml-2"></span>
@@ -423,13 +424,11 @@
                                     </tr>
                                 </thead>
                                 <tbody id="composites-results-table" class="divide-y divide-slate-200 bg-white">
-                                    <!-- Populated dynamically via JS -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Interpretation & Severity Guide (القسم الرابع) -->
                     <div class="bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-200 rounded-2xl p-4 md:p-6 space-y-4">
                         <h4 class="font-bold text-teal-900 text-sm md:text-base flex items-center border-b border-teal-200 pb-3">
                             <span class="w-2.5 h-5 bg-teal-600 rounded-full ml-2"></span>
@@ -464,14 +463,12 @@
             </form>
         </div>
 
-        <!-- حقوق التطوير -->
         <footer class="mt-6 text-center py-4 border-t border-slate-200 text-slate-500 text-xs md:text-sm">
-            تم التطوير بواسطة الباشا أخصائي سنوسي معروف الصياد أخصائي التربية الخاصة
+            تطوير الباش_أخصائي©
         </footer>
     </main>
 
     <script>
-        // بيانات بنود المقياس الستة
         const subscaleData = {
             1: {
                 name: "السلوكيات التكرارية (RB)",
@@ -569,7 +566,6 @@
             }
         };
 
-        // ملء قوائم الأيام والسنوات لتاريخ الميلاد
         function populateDateSelectors() {
             const daySelect = document.getElementById('birthDay');
             for (let d = 1; d <= 31; d++) {
@@ -589,7 +585,6 @@
             }
         }
 
-        // حساب العمر الزمني بدقة (بالسنوات والأشهر) بين تاريخ الميلاد وتاريخ التطبيق
         function calculateChronologicalAge() {
             const d = document.getElementById('birthDay').value;
             const m = document.getElementById('birthMonth').value;
@@ -635,7 +630,6 @@
             displayEl.innerText = `${years} سنة و ${months} شهر`;
         }
 
-        // تهيئة بنود التقييم بتصميم متجاوب مع الهواتف والشاشات الكبيرة
         function renderItems() {
             for (let sId in subscaleData) {
                 const container = document.getElementById(`container-subscale-${sId}`);
@@ -670,7 +664,6 @@
             }
         }
 
-        // التنقل بين التبويبات
         function switchTab(tabIndex) {
             const tabs = document.querySelectorAll('.tab-content');
             const navBtns = document.querySelectorAll('.tab-btn');
@@ -696,7 +689,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // حساب الدرجات الخام فورياً
         function updateRawScores() {
             for (let sId in subscaleData) {
                 let sum = 0;
@@ -712,7 +704,6 @@
             }
         }
 
-        // الجداول المعيارية التقريبية لغرض التحويل التلقائي المتوافق مع دليل GARS-3
         function getScaledScore(raw, subId) {
             if (raw <= 2) return { scaled: 1, percentile: "< 1", sem: 1 };
             if (raw <= 5) return { scaled: 3, percentile: "1", sem: 1 };
@@ -755,7 +746,6 @@
             return { sumScaled, autismIndex, percentile, prob, severity, recommendation };
         }
 
-        // توليد نتائج التقرير
         function generateResults() {
             document.getElementById('rep-child-name').innerText = document.getElementById('childName').value || "غير مسجل";
             const years = document.getElementById('childAgeYears').value;
@@ -817,7 +807,6 @@
             document.getElementById('res-recommendation').innerText = comp6.recommendation;
         }
 
-        // تشغيل التحميل الأولي
         window.onload = function() {
             populateDateSelectors();
             renderItems();
