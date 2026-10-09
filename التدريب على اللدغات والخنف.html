@@ -2,163 +2,672 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>قائمة كلمات تدريبات اللثغة والخنف - معهد السمع والكلام</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Cairo Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f8fafc;
+    <!-- استدعاء خط Cairo وأيقونات FontAwesome المعتمدة في ملف report.html -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        if (!localStorage.getItem("currentUser")) {
+            window.location.replace("index.html");
         }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-light: #eef2ff;
+            --primary-dark: #4338ca;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body, input, select, textarea, button {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 1.5rem 0.75rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1040px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        /* الهيدر العلوي بنمط report.html */
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+            color: white;
+            padding: 1.75rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .header-title-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(4px);
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
+            font-size: 1.35rem;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .header-text p {
+            color: #e0e7ff;
+            font-size: 0.82rem;
+            margin-top: 3px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-home {
+            background: rgba(255, 255, 255, 0.16);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 0.55rem 1.1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+        }
+
+        .btn-home:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: translateY(-1px);
+        }
+
+        .badge-info {
+            background: rgba(15, 23, 42, 0.28);
+            color: #e0e7ff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.55rem 1rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* لوحة التحكم واختيار الحرف */
+        .controls-panel {
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .controls-panel {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .selector-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        @media (min-width: 640px) {
+            .selector-box {
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        .selector-box label {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #1e293b;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .selector-box label i {
+            color: var(--primary-color);
+        }
+
+        .select-input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            background: white;
+            color: #1e293b;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .select-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        /* إحصائيات سريعة للكلمات */
+        .stats-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            background: white;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0.45rem 0.85rem;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #334155;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .stat-pill.beg {
+            border-color: #c7d2fe;
+            color: var(--primary-color);
+            background: var(--primary-light);
+        }
+
+        .stat-pill.mid {
+            border-color: #bbf7d0;
+            color: #059669;
+            background: #ecfdf5;
+        }
+
+        .stat-pill.end {
+            border-color: #fed7aa;
+            color: #d97706;
+            background: #fff7ed;
+        }
+
+        /* المحتوى الداخلي وعرض الكلمات */
+        .content-area {
+            padding: 1.75rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .sound-banner-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        @media (min-width: 640px) {
+            .sound-banner-row {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .sound-title-wrap h2 {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sound-title-wrap h2 i {
+            color: var(--primary-color);
+        }
+
+        .sound-title-wrap p {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        .btn-print {
+            background: #1e293b;
+            color: white;
+            padding: 0.65rem 1.3rem;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+            transition: all 0.2s ease;
+            width: fit-content;
+        }
+
+        .btn-print:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
+        }
+
+        /* أقسام المواضع النطقية */
+        .word-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header h3 {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header h3 i {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .count-badge {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        /* شبكة عرض الكلمات كبطاقات */
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        @media (min-width: 480px) {
+            .words-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 640px) {
+            .words-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .words-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        .word-card {
+            background: white;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0.65rem 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #1e293b;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .word-card:hover {
+            border-color: #c7d2fe;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.08);
+        }
+
+        /* قسم الصوت المكرر والجمل */
+        .repeated-sentences-box {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1.5px solid #c7d2fe;
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.04);
+        }
+
+        .repeated-header {
+            font-size: 1rem;
+            font-weight: 900;
+            color: #312e81;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 0.6rem;
+            border-bottom: 1.5px solid #e0e7ff;
+        }
+
+        .repeated-header i {
+            color: var(--primary-color);
+        }
+
+        .sub-block-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #475569;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .repeated-card {
+            background: white;
+            border: 1.5px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 0.6rem 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .repeated-card:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* قائمة الجمل السياقية */
+        .sentences-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .sentence-card {
+            background: white;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .sentence-card:hover {
+            border-color: var(--primary-color);
+            background: #faf5ff;
+        }
+
+        .sentence-bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .sentence-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        .footer-credit {
+            text-align: center;
+            padding: 1.1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: #fafafa;
+        }
+
+        /* الطباعة */
         @media print {
             .no-print {
                 display: none !important;
             }
             body {
-                background-color: white !important;
+                background: white !important;
+                padding: 0 !important;
             }
-            .print-shadow {
+            .container {
+                border: none !important;
                 box-shadow: none !important;
+                max-width: 100% !important;
+            }
+            .header {
+                background: none !important;
+                color: black !important;
+                border-bottom: 2px solid #000 !important;
+                padding: 0 0 1rem 0 !important;
+            }
+            .header h1 {
+                color: black !important;
+            }
+            .header p {
+                color: #555 !important;
+            }
+            .word-card, .repeated-card, .sentence-card {
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                page-break-inside: avoid;
             }
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- شريط الهيدر مع زر الرجوع للرئيسية -->
-    <header class="bg-gradient-to-r from-teal-700 to-cyan-800 text-white shadow-md py-4 md:py-6 px-4 no-print">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-right gap-3">
-            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-3 md:space-x-reverse">
-                <div class="bg-white/10 p-2.5 rounded-xl border border-white/20">
-                    <svg class="w-7 h-7 text-cyan-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path>
-                    </svg>
+    <div class="container">
+        <!-- شريط الهيدر الموحد بنمط report.html -->
+        <header class="header no-print">
+            <div class="header-title-box">
+                <div class="header-icon">
+                    <i class="fa-solid fa-head-side-cough"></i>
                 </div>
-                <div>
-                    <h1 class="text-xl md:text-2xl font-bold tracking-tight">قائمة كلمات تدريبات اللثغة والخنف</h1>
-                    <p class="text-cyan-200 text-xs md:text-sm">دليل الحروف والمواقع النطقية والتدريب الصوتي التلقائي</p>
+                <div class="header-text">
+                    <h1>قائمة كلمات تدريبات اللثغة والخنف</h1>
+                    <p>دليل الحروف والمواقع النطقية والتدريب الصوتي التلقائي - معهد السمع والكلام</p>
                 </div>
             </div>
             
-            <div class="flex items-center gap-3">
-                <div class="text-xs bg-cyan-900/60 px-3 py-1.5 rounded-lg border border-cyan-500/30 text-cyan-100 hidden sm:block">
-                    معهد السمع والكلام
-                </div>
-                <!-- زر الرجوع للرئيسية -->
-                <a href="home.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-bold transition-all flex items-center gap-1.5 shadow-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                    </svg>
+            <div class="header-actions">
+                <span class="badge-info hidden sm:inline-block">معهد السمع والكلام</span>
+                <a href="home.html" class="btn-home">
+                    <i class="fa-solid fa-house"></i>
                     <span>الرئيسية</span>
                 </a>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="flex-grow max-w-6xl w-full mx-auto p-2 md:p-6">
-        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden print-shadow">
-            
-            <!-- الفهرس وبطاقة الاختيار الأساسية -->
-            <div class="p-4 md:p-6 border-b border-slate-200 bg-gradient-to-br from-teal-50/50 to-cyan-50/50">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="w-full md:w-3/5 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
-                        <label for="soundSelect" class="text-sm md:text-base font-bold text-teal-900 whitespace-nowrap flex items-center">
-                            <span class="w-2.5 h-6 bg-teal-600 rounded-full ml-2"></span>
-                            فهرس الأصوات (اختر صوت الحرف):
-                        </label>
-                        <select id="soundSelect" onchange="switchSound(this.value)" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm md:text-base font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-600 shadow-sm cursor-pointer transition-all">
-                        </select>
-                    </div>
-
-                    <!-- إحصائيات سريعة للكلمات -->
-                    <div class="flex items-center gap-2 text-xs md:text-sm w-full md:w-auto justify-end">
-                        <span id="statBeg" class="bg-white text-teal-800 border border-teal-200 font-bold px-3 py-1.5 rounded-xl shadow-sm">بداية: 0</span>
-                        <span id="statMid" class="bg-white text-cyan-800 border border-cyan-200 font-bold px-3 py-1.5 rounded-xl shadow-sm">وسط: 0</span>
-                        <span id="statEnd" class="bg-white text-slate-700 border border-slate-200 font-bold px-3 py-1.5 rounded-xl shadow-sm">نهاية: 0</span>
-                    </div>
-                </div>
+        <!-- لوحة التحكم واختيار الحرف مع الإحصائيات -->
+        <div class="controls-panel no-print">
+            <div class="selector-box">
+                <label for="soundSelect">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>فهرس الأصوات (اختر صوت الحرف):</span>
+                </label>
+                <select id="soundSelect" onchange="switchSound(this.value)" class="select-input">
+                </select>
             </div>
 
-            <!-- محتوى الكلمات والتدريبات للحرف المختار -->
-            <div class="p-4 md:p-8 space-y-8" id="soundContentContainer">
-                <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                    <div>
-                        <h2 id="currentSoundTitle" class="text-lg md:text-xl font-bold text-slate-800 flex items-center">
-                            <span class="w-2.5 h-6 bg-teal-600 rounded-full ml-2"></span>
-                            صوت الحرف
-                        </h2>
-                        <p id="currentSoundPages" class="text-slate-500 text-xs md:text-sm mt-1">موضع الحرف والصفحات في المذكرة المرجعية</p>
-                    </div>
-                    <button type="button" onclick="window.print()" class="no-print bg-slate-800 hover:bg-slate-900 text-white font-bold px-4 py-2 rounded-xl transition-all text-xs flex items-center gap-1.5 shadow-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                        <span>طباعة البطاقة</span>
-                    </button>
+            <div class="stats-badge-row">
+                <span id="statBeg" class="stat-pill beg">بداية: 0</span>
+                <span id="statMid" class="stat-pill mid">وسط: 0</span>
+                <span id="statEnd" class="stat-pill end">نهاية: 0</span>
+            </div>
+        </div>
+
+        <!-- محتوى الكلمات والتدريبات للحرف المختار -->
+        <main class="content-area">
+            <div class="sound-banner-row">
+                <div class="sound-title-wrap">
+                    <h2 id="currentSoundTitle">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                        <span>صوت الحرف</span>
+                    </h2>
+                    <p id="currentSoundPages">موضع الحرف والصفحات في المذكرة المرجعية</p>
                 </div>
+                <button type="button" onclick="window.print()" class="btn-print no-print">
+                    <i class="fa-solid fa-print"></i>
+                    <span>طباعة البطاقة</span>
+                </button>
+            </div>
 
-                <!-- 1. في بداية الكلمة -->
-                <section class="space-y-3">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center">
-                            <span class="w-2 h-4 bg-teal-600 rounded-full ml-2"></span>
-                            في بداية الكلمة
-                        </h3>
-                        <span id="countBeginning" class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200 font-semibold"></span>
-                    </div>
-                    <div id="gridBeginning" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2"></div>
-                </section>
-
-                <!-- 2. في وسط الكلمة -->
-                <section class="space-y-3">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center">
-                            <span class="w-2 h-4 bg-teal-600 rounded-full ml-2"></span>
-                            داخل / وسط الكلمة
-                        </h3>
-                        <span id="countInside" class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200 font-semibold"></span>
-                    </div>
-                    <div id="gridInside" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2"></div>
-                </section>
-
-                <!-- 3. في نهاية الكلمة -->
-                <section class="space-y-3">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center">
-                            <span class="w-2 h-4 bg-teal-600 rounded-full ml-2"></span>
-                            في نهاية الكلمة
-                        </h3>
-                        <span id="countEnding" class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200 font-semibold"></span>
-                    </div>
-                    <div id="gridEnding" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2"></div>
-                </section>
-
-                <!-- 4. كلمات مكررة وجمل الكلام التلقائي -->
-                <section class="bg-gradient-to-br from-teal-50/70 to-cyan-50/70 border border-teal-200 rounded-2xl p-4 md:p-6 space-y-4">
-                    <h3 class="font-bold text-teal-900 text-sm md:text-base flex items-center border-b border-teal-200 pb-3">
-                        <span class="w-2.5 h-5 bg-teal-600 rounded-full ml-2"></span>
-                        الصوت مكرر وفي جمل والكلام التلقائي
+            <!-- 1. في بداية الكلمة -->
+            <section class="word-section">
+                <div class="section-header">
+                    <h3>
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <span>في بداية الكلمة</span>
                     </h3>
+                    <span id="countBeginning" class="count-badge"></span>
+                </div>
+                <div id="gridBeginning" class="words-grid"></div>
+            </section>
 
-                    <div>
-                        <span class="block text-xs font-bold text-teal-800 mb-2">كلمات بصوت مكرر:</span>
-                        <div id="gridRepeated" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2"></div>
+            <!-- 2. في وسط الكلمة -->
+            <section class="word-section">
+                <div class="section-header">
+                    <h3>
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <span>داخل / وسط الكلمة</span>
+                    </h3>
+                    <span id="countInside" class="count-badge"></span>
+                </div>
+                <div id="gridInside" class="words-grid"></div>
+            </section>
+
+            <!-- 3. في نهاية الكلمة -->
+            <section class="word-section">
+                <div class="section-header">
+                    <h3>
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <span>في نهاية الكلمة</span>
+                    </h3>
+                    <span id="countEnding" class="count-badge"></span>
+                </div>
+                <div id="gridEnding" class="words-grid"></div>
+            </section>
+
+            <!-- 4. كلمات مكررة وجمل الكلام التلقائي -->
+            <section class="repeated-sentences-box">
+                <div class="repeated-header">
+                    <i class="fa-solid fa-arrows-spin"></i>
+                    <span>الصوت مكرر وفي جمل والكلام التلقائي</span>
+                </div>
+
+                <div>
+                    <div class="sub-block-title">
+                        <i class="fa-solid fa-quote-right" style="color: var(--primary-color);"></i>
+                        <span>كلمات بصوت مكرر:</span>
                     </div>
+                    <div id="gridRepeated" class="words-grid"></div>
+                </div>
 
-                    <div class="pt-2">
-                        <span class="block text-xs font-bold text-teal-800 mb-2">جمل التدريب السياقي والكلام التلقائي:</span>
-                        <div id="listSentences" class="space-y-2"></div>
+                <div style="padding-top: 0.5rem;">
+                    <div class="sub-block-title">
+                        <i class="fa-solid fa-comment-dots" style="color: var(--primary-color);"></i>
+                        <span>جمل التدريب السياقي والكلام التلقائي:</span>
                     </div>
-                </section>
-            </div>
-        </div>
+                    <div id="listSentences" class="sentences-list"></div>
+                </div>
+            </section>
+        </main>
 
-        <!-- تذييل الصفحة -->
-        <footer class="mt-6 text-center py-4 border-t border-slate-200 text-slate-500 text-xs md:text-sm">
-            تطوير الباش_أخصائي©
+        <!-- تذييل الصفحة الموحد -->
+        <footer class="footer-credit">
+            جميع حقوق التطوير والنشر محفوظة © تطوير الباش_أخصائي سنوسي معروف - أخصائي التربية الخاصة[span_3](start_span)[span_3](end_span)[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)
         </footer>
-    </main>
+    </div>
 
     <script>
         const speechData = {
@@ -544,7 +1053,7 @@
 
             document.getElementById('soundSelect').value = key;
 
-            document.getElementById('currentSoundTitle').innerHTML = `<span class="w-2.5 h-6 bg-teal-600 rounded-full ml-2"></span> ${data.name}`;
+            document.getElementById('currentSoundTitle').innerHTML = `<i class="fa-solid fa-microphone-lines"></i> <span>${data.name}</span>`;
             document.getElementById('currentSoundPages').innerText = `مرجع المذكرة: ${data.page}`;
             
             document.getElementById('statBeg').innerText = `بداية: ${data.beginning.length}`;
@@ -553,35 +1062,35 @@
 
             document.getElementById('countBeginning').innerText = `${data.beginning.length} كلمة`;
             document.getElementById('gridBeginning').innerHTML = data.beginning.map(word => `
-                <div class="bg-white border border-slate-200 hover:border-teal-400 hover:bg-teal-50/40 p-2.5 rounded-xl text-center font-bold text-xs md:text-sm text-slate-800 shadow-sm transition-all">
+                <div class="word-card">
                     ${word}
                 </div>
             `).join('');
 
             document.getElementById('countInside').innerText = `${data.inside.length} كلمة`;
             document.getElementById('gridInside').innerHTML = data.inside.map(word => `
-                <div class="bg-white border border-slate-200 hover:border-teal-400 hover:bg-teal-50/40 p-2.5 rounded-xl text-center font-bold text-xs md:text-sm text-slate-800 shadow-sm transition-all">
+                <div class="word-card">
                     ${word}
                 </div>
             `).join('');
 
             document.getElementById('countEnding').innerText = `${data.ending.length} كلمة`;
             document.getElementById('gridEnding').innerHTML = data.ending.map(word => `
-                <div class="bg-white border border-slate-200 hover:border-teal-400 hover:bg-teal-50/40 p-2.5 rounded-xl text-center font-bold text-xs md:text-sm text-slate-800 shadow-sm transition-all">
+                <div class="word-card">
                     ${word}
                 </div>
             `).join('');
 
             document.getElementById('gridRepeated').innerHTML = data.repeated.map(word => `
-                <div class="bg-white border border-teal-100 hover:border-teal-300 p-2 rounded-xl text-center font-extrabold text-xs md:text-sm text-teal-900 shadow-sm">
+                <div class="repeated-card">
                     ${word}
                 </div>
             `).join('');
 
             document.getElementById('listSentences').innerHTML = data.sentences.map(sent => `
-                <div class="bg-white p-3 rounded-xl border border-teal-100 shadow-sm flex items-start space-x-2 space-x-reverse">
-                    <span class="w-2 h-2 bg-teal-600 rounded-full mt-2 ml-1 flex-shrink-0"></span>
-                    <p class="text-xs md:text-sm font-medium text-slate-800 leading-relaxed">${sent}</p>
+                <div class="sentence-card">
+                    <span class="sentence-bullet"></span>
+                    <p class="sentence-text">${sent}</p>
                 </div>
             `).join('');
         }
@@ -593,3 +1102,4 @@
     </script>
 </body>
 </html>
+
